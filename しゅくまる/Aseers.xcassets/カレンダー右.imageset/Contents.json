@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "idiom" : "universal",
+      "filename" : "カレンダー右.pdf"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}

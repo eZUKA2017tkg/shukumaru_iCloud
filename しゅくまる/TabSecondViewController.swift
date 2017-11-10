@@ -1,0 +1,49 @@
+//
+//  TabSecondViewController.swift
+//  しゅくまる
+//
+//  Created by miyu.s on 2017/10/17.
+//  Copyright © 2017年 miyu.s. All rights reserved.
+//
+
+import UIKit
+
+class TabSecondViewController: UIViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+    
+    //画面を自動回転させない
+    override var shouldAutorotate: Bool {
+        get {
+            return false
+        }
+    }
+    
+    //画面の向きを指定
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        get {
+        return .landscape
+        }
+    }
+
+}

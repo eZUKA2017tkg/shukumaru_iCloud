@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "idiom" : "universal",
+      "filename" : "こくごボタン.pdf"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}

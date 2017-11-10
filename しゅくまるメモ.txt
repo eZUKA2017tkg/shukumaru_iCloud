@@ -1,0 +1,20 @@
+SkyWay組込み用メモ
+
+//UIKitと一緒に記載
+import SkyWay
+
+//APIキーとドメインを宣言
+    let kAPIkey = "acfa3497-42a8-48cb-a5bf-b50411b47725"
+    let kDomain = "com.gmail.mnmk"
+
+//[https://weblog.hirozo.net/?p=525]より
+
+//設定-General-Embedded BinariesにSkyWay.frameworkを追加する
+//設定-Build Settings-Build Options-Enable BitcodeをNOにする
+//SkyWayを使用するSwiftファイルに”import SkyWay”を追加する
+
+画面回転固定　設定
+
+Universal : portrate
+iPad : landscape right & landscape left
+iPhone : portrate

@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "idiom" : "universal",
+      "filename" : "かんじドリル30pt.pdf",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "かんじドリル60pt.pdf",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "かんじドリル90pt.pdf",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}
