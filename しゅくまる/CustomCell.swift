@@ -74,17 +74,48 @@ class CustomCell: UITableViewCell {
     
     
     @IBAction func tapBtnAction(_ sender: Any) {
+
+        if cellObject.tapBtn == 0 {
         
         tapBtn?.setTitle("おわった!", for: .normal)
         tapBtn?.setTitleColor(UIColor(red: 48/255, green: 148/255, blue: 137/255, alpha: 1.0), for: .normal)
         tapBtn?.backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        if cellObject.tapBtn == 0 {
+            let store  = NSUbiquitousKeyValueStore.default()
+            var hanteiArray = store.array(forKey: "宿題リスト1/タイトル")
+            if titleLabel.text == (hanteiArray?[1] as! String) {
+                store.removeObject(forKey: "宿題リスト1/状況")
+                store.set([1, 0], forKey: "宿題リスト1/状況")
+                store.synchronize()
+            }else {
+                hanteiArray = store.array(forKey: "宿題リスト2/タイトル")
+                if titleLabel.text == (hanteiArray?[1] as! String) {
+                    store.removeObject(forKey: "宿題リスト2/状況")
+                    store.set([1, 0], forKey: "宿題リスト2/状況")
+                    store.synchronize()
+                }else {
+                    hanteiArray = store.array(forKey: "宿題リスト3/タイトル")
+                    if titleLabel.text == (hanteiArray?[1] as! String) {
+                        store.removeObject(forKey: "宿題リスト3/状況")
+                        store.set([1, 0], forKey: "宿題リスト3/状況")
+                        store.synchronize()
+                    }else {
+                        hanteiArray = store.array(forKey: "宿題リスト4/タイトル")
+                        if titleLabel.text == (hanteiArray?[1] as! String) {
+                            store.removeObject(forKey: "宿題リスト4/状況")
+                            store.set([1, 0], forKey: "宿題リスト4/状況")
+                            store.synchronize()
+                        }
+                    }
+                }
+            }
+        }
+        
         cellObject.tapBtn = 1
-        
-        hanamaruView?.image = UIImage(named: "はなまる")
-        cellObject.hanamaruView = 1
-        
         // DelegateでViewControllerに処理を渡す
         delegate?.updateCellObject(object: cellObject)
+        }
+
     }
     
 }

@@ -50,11 +50,11 @@ class phoneCustomCell: UITableViewCell {
             print(cellObject.title)
             
             if cellObject.tapView == 0 {
-                tapView?.setTitle("これから!", for: .normal)
+                tapView?.setTitle("未", for: .normal)
                 tapView?.setTitleColor(UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
                 tapView?.backgroundColor = UIColor(red: 48/255, green: 148/255, blue: 137/255, alpha: 1.0)
             }else if cellObject.tapView == 1 {
-                tapView?.setTitle("おわった!", for: .normal)
+                tapView?.setTitle("済", for: .normal)
                 tapView?.setTitleColor(UIColor(red: 48/255, green: 148/255, blue: 137/255, alpha: 1.0), for: .normal)
                 tapView?.backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
             }
@@ -68,7 +68,73 @@ class phoneCustomCell: UITableViewCell {
         
     }
 
-    
+    @IBAction func hanamaruTap(_ sender: Any) {
+       /*
+        let store  = NSUbiquitousKeyValueStore.default()
+        var hanteiArray = store.array(forKey: "宿題リスト1/タイトル")
+
+        if titleLabel.text == (hanteiArray?[1] as! String) {
+            
+            var colorHanteiArray = store.array(forKey: "宿題リスト1/状況")
+            
+            if (colorHanteiArray?[0] as! Int) == 1 {
+                
+                hanamaruBtn?.setBackgroundImage(UIImage(named: "はなまる"), for: .normal)
+                store.removeObject(forKey: "宿題リスト1/状況")
+                store.set([1, 1], forKey: "宿題リスト1/状況")
+                store.synchronize()
+            }
+            
+        }else {
+                hanteiArray = store.array(forKey: "宿題リスト2/タイトル")
+                if titleLabel.text == (hanteiArray?[1] as! String) {
+                    
+                    var colorHanteiArray = store.array(forKey: "宿題リスト1/状況")
+                    
+                    if (colorHanteiArray?[0] as! Int) == 1 {
+                        
+                        hanamaruBtn?.setBackgroundImage(UIImage(named: "はなまる"), for: .normal)
+                        store.removeObject(forKey: "宿題リスト2/状況")
+                        store.set([1, 1], forKey: "宿題リスト2/状況")
+                        store.synchronize()
+                    }
+                }else {
+                    hanteiArray = store.array(forKey: "宿題リスト3/タイトル")
+                    if titleLabel.text == (hanteiArray?[1] as! String) {
+                        
+                        var colorHanteiArray = store.array(forKey: "宿題リスト3/状況")
+                        
+                        if (colorHanteiArray?[0] as! Int) == 1 {
+                            
+                            hanamaruBtn?.setBackgroundImage(UIImage(named: "はなまる"), for: .normal)
+                            store.removeObject(forKey: "宿題リスト3/状況")
+                            store.set([1, 1], forKey: "宿題リスト3/状況")
+                            store.synchronize()
+                        }
+                    }else {
+                        hanteiArray = store.array(forKey: "宿題リスト4/タイトル")
+                        if titleLabel.text == (hanteiArray?[1] as! String) {
+                            
+                            var colorHanteiArray = store.array(forKey: "宿題リスト4/状況")
+                            
+                            if (colorHanteiArray?[0] as! Int) == 1 {
+                                
+                                hanamaruBtn?.setBackgroundImage(UIImage(named: "はなまる"), for: .normal)
+                                store.removeObject(forKey: "宿題リスト4/状況")
+                                store.set([1, 1], forKey: "宿題リスト4/状況")
+                                store.synchronize()
+                            }
+                    }
+                }
+            }
+        }
+               cellObject.hanamaruBtn = 1
+        // DelegateでViewControllerに処理を渡す
+        delegate?.updateCellObject(object: cellObject)
+        */
+    }
+
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

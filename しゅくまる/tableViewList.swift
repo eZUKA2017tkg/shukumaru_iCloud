@@ -104,26 +104,16 @@ class tableViewList: UIViewController, UITableViewDataSource, UITableViewDelegat
         let store  = NSUbiquitousKeyValueStore.default()
 
         store.removeObject(forKey: "宿題数")
-        store.synchronize()
         store.removeObject(forKey: "宿題リスト1/タイトル")
-        store.synchronize()
         store.removeObject(forKey: "宿題リスト1/状況")
-        store.synchronize()
         store.removeObject(forKey: "宿題リスト2/タイトル")
-        store.synchronize()
         store.removeObject(forKey: "宿題リスト2/状況")
-        store.synchronize()
         store.removeObject(forKey: "宿題リスト3/タイトル")
-        store.synchronize()
         store.removeObject(forKey: "宿題リスト3/状況")
-        store.synchronize()
         store.removeObject(forKey: "宿題リスト4/タイトル")
-        store.synchronize()
         store.removeObject(forKey: "宿題リスト4/状況")
-        store.synchronize()
 
         store.set(shukudaiCount, forKey: "宿題数")
-        store.synchronize()
         
         
 
@@ -131,35 +121,31 @@ class tableViewList: UIViewController, UITableViewDataSource, UITableViewDelegat
         store.set([imgArray[0], label2Array[0]], forKey: "宿題リスト1/タイトル")
         store.synchronize()
         store.set([0, 0], forKey: "宿題リスト1/状況")
-        store.synchronize()
         }else {
             store.set(["", ""], forKey: "宿題リスト1/タイトル")
             store.synchronize()
             store.set([0, 0], forKey: "宿題リスト1/状況")
-            store.synchronize()
         }
         
         if shukudaiCount > 1 {
         store.set([imgArray[1], label2Array[1]], forKey: "宿題リスト2/タイトル")
             store.synchronize()
         store.set([0, 0], forKey: "宿題リスト2/状況")
-            store.synchronize()
         }
         
         if shukudaiCount > 2 {
         store.set([imgArray[2], label2Array[2]], forKey: "宿題リスト3/タイトル")
             store.synchronize()
         store.set([0, 0], forKey: "宿題リスト3/状況")
-            store.synchronize()
         }
         
         if shukudaiCount > 3 {
         store.set([imgArray[3], label2Array[3]], forKey: "宿題リスト4/タイトル")
             store.synchronize()
         store.set([0, 0], forKey: "宿題リスト4/状況")
-            store.synchronize()
         }
 
+        store.synchronize()
     }
     
     

@@ -40,13 +40,9 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         let store  = NSUbiquitousKeyValueStore.default()
         shukudaiCount = Int(store.longLong(forKey: "宿題数"))
         
-        for num in 0 ..< label2Array.count {
-            finishCount += buttonArray[num]
-        }
         Shukudaisuu.text = shukudaiCount.description
         Shukudaisuu2.text = shukudaiCount.description
         
-        Finish.text = String(finishCount)
         
         let selectDate = Date()
         let formatter: DateFormatter = DateFormatter()
@@ -112,7 +108,64 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
             buttonArray.append(zyoutaiArray[1])
             
         }
- 
+        
+        for num in 0 ..< label2Array.count {
+            finishCount += img2Array[num]
+        }
+        
+        Finish.text = String(finishCount)
+        shukudaiToCount()
+    }
+    
+    @IBOutlet weak var image1: UIImageView!
+    @IBOutlet weak var image2: UIImageView!
+    @IBOutlet weak var image3: UIImageView!
+    @IBOutlet weak var image4: UIImageView!
+    @IBOutlet weak var image5: UIImageView!
+    @IBOutlet weak var image6: UIImageView!
+    @IBOutlet weak var image7: UIImageView!
+    @IBOutlet weak var image8: UIImageView!
+    @IBOutlet weak var image9: UIImageView!
+    @IBOutlet weak var image10: UIImageView!
+    @IBOutlet weak var image11: UIImageView!
+    @IBOutlet weak var image12: UIImageView!
+
+    
+    func shukudaiToCount() {
+        var count:Int = 0
+        for num in 0 ..< label2Array.count {
+            count += img2Array[num]
+        }
+        Finish.text = count.description
+        
+        if 12/label2Array.count*count >= 3 {
+            image1.backgroundColor = UIColor(red: 48/255, green: 148/255, blue: 137/255, alpha: 1.0)
+            image2.backgroundColor = UIColor(red: 48/255, green: 148/255, blue: 137/255, alpha: 1.0)
+            image3.backgroundColor = UIColor(red: 48/255, green: 148/255, blue: 137/255, alpha: 1.0)
+        }
+        if 12/label2Array.count*count >= 4 {
+            image4.backgroundColor = UIColor(red: 48/255, green: 148/255, blue: 137/255, alpha: 1.0)
+        }
+        if 12/label2Array.count*count >= 6 {
+            image5.backgroundColor = UIColor(red: 48/255, green: 148/255, blue: 137/255, alpha: 1.0)
+            image6.backgroundColor = UIColor(red: 48/255, green: 148/255, blue: 137/255, alpha: 1.0)
+        }
+        if 12/label2Array.count*count >= 8 {
+            image7.backgroundColor = UIColor(red: 48/255, green: 148/255, blue: 137/255, alpha: 1.0)
+            image8.backgroundColor = UIColor(red: 48/255, green: 148/255, blue: 137/255, alpha: 1.0)
+        }
+        if 12/label2Array.count*count >= 9 {
+            image9.backgroundColor = UIColor(red: 48/255, green: 148/255, blue: 137/255, alpha: 1.0)
+        }
+        if 12/label2Array.count*count >= 10 {
+            image10.backgroundColor = UIColor(red: 48/255, green: 148/255, blue: 137/255, alpha: 1.0)
+        }
+        if 12/label2Array.count*count >= 12 {
+            image11.backgroundColor = UIColor(red: 48/255, green: 148/255, blue: 137/255, alpha: 1.0)
+            image12.backgroundColor = UIColor(red: 48/255, green: 148/255, blue: 137/255, alpha: 1.0)
+        }
+        
+        
     }
     
     //TableViewセルの数を指定
