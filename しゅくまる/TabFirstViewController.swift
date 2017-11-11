@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import  NCMB
 
 class TabFirstViewController: UIViewController, UITableViewDelegate {
     
@@ -302,6 +303,29 @@ class TabFirstViewController: UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        //宿題数の読み込み
+        let obj5 = NCMBObject(className: "shukumaru")
+        
+        obj5?.objectId = "UmVEpBZ2hXIkWXlH"
+        // 設定されたobjectIdを元にデータストアからデータを取得
+        obj5?.fetchInBackground({ (error) in
+            if error != nil {
+                // 取得に失敗した場合の処理
+            }else{
+                // 取得に成功した場合の処理
+                // (例)取得したデータの出力
+                obj5?.setObject(4, forKey: "number")
+                // データストアへの保存を実施
+                obj5?.saveInBackground({ (error) in
+                    if error != nil {
+                        // 保存に失敗した場合の処理
+                    }else{
+                        // 保存に成功した場合の処理
+                    }
+                })
+            }
+        })
     }
     //画面を自動回転させない
     override var shouldAutorotate: Bool {

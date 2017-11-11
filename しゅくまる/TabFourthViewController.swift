@@ -83,12 +83,13 @@ class TabFourthViewController: UIViewController, UICollectionViewDataSource, UIC
         
         let Btn = cell.hanamaruBtn
         //テキスト配置
+        
         if indexPath.section == 0 {
             cell.textLabel?.text = weekArray[indexPath.row]
             Btn?.setBackgroundImage(UIImage(named: "nil"), for: .normal)
         }else {
             cell.textLabel?.text = dateManager.conversionDateFormat(indexPath: indexPath)
-            Btn?.setBackgroundImage(UIImage(named: "はなまるoff"), for: .normal)
+            Btn?.setBackgroundImage(UIImage(named: "nil"), for: .normal)
             //月によって1日の場所は異なる
             
         }

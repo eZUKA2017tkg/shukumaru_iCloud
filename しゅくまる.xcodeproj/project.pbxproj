@@ -43,6 +43,8 @@
 		1945BF7C1FAF05E600EF3371 /* SkyWay.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1945BF791FAF05DB00EF3371 /* SkyWay.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		197166C91FAD731800B04AD2 /* tableViewList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197166C81FAD731800B04AD2 /* tableViewList.swift */; };
 		19DB72DD1FB59A6B00D366AE /* selectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DB72DC1FB59A6B00D366AE /* selectViewController.swift */; };
+		19DB72DF1FB59E7000D366AE /* phoneCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DB72DE1FB59E7000D366AE /* phoneCustomCell.swift */; };
+		19DB72E11FB5AF4600D366AE /* phoneTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DB72E01FB5AF4600D366AE /* phoneTabBarController.swift */; };
 		2211F5B2DE5B125511CF9C83 /* Pods______.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5420E902A10E5DF8D6D36A6E /* Pods______.framework */; };
 		AE4853587C752F219F7D956A /* Pods______UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1011C9DFDAA63CAA991BEBB3 /* Pods______UITests.framework */; };
 /* End PBXBuildFile section */
@@ -80,6 +82,7 @@
 
 /* Begin PBXFileReference section */
 		1011C9DFDAA63CAA991BEBB3 /* Pods______UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods______UITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		190FE5611FB6EB5500C12E32 /* しゅくまる.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "しゅくまる.entitlements"; sourceTree = "<group>"; };
 		1917F8751F5AFBB90070C44F /* しゅくまる.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "しゅくまる.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1917F8781F5AFBB90070C44F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1917F87A1F5AFBB90070C44F /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +123,8 @@
 		1945BF791FAF05DB00EF3371 /* SkyWay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SkyWay.framework; sourceTree = "<group>"; };
 		197166C81FAD731800B04AD2 /* tableViewList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tableViewList.swift; sourceTree = "<group>"; };
 		19DB72DC1FB59A6B00D366AE /* selectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = selectViewController.swift; sourceTree = "<group>"; };
+		19DB72DE1FB59E7000D366AE /* phoneCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = phoneCustomCell.swift; sourceTree = "<group>"; };
+		19DB72E01FB5AF4600D366AE /* phoneTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = phoneTabBarController.swift; sourceTree = "<group>"; };
 		1A92D69C71E69989BE2EA204 /* Pods-しゅくまるUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-しゅくまるUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-しゅくまるUITests/Pods-しゅくまるUITests.release.xcconfig"; sourceTree = "<group>"; };
 		1F8FBA8291DEA0F79C108C0F /* Pods-しゅくまる.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-しゅくまる.release.xcconfig"; path = "Pods/Target Support Files/Pods-しゅくまる/Pods-しゅくまる.release.xcconfig"; sourceTree = "<group>"; };
 		3B6C5BA812227CC6370118E8 /* Pods-しゅくまるTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-しゅくまるTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-しゅくまるTests/Pods-しゅくまるTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -196,8 +201,10 @@
 		1917F8771F5AFBB90070C44F /* しゅくまる */ = {
 			isa = PBXGroup;
 			children = (
+				190FE5611FB6EB5500C12E32 /* しゅくまる.entitlements */,
 				1917F8781F5AFBB90070C44F /* AppDelegate.swift */,
 				1917F87E1F5AFBB90070C44F /* Main.storyboard */,
+				19DB72E01FB5AF4600D366AE /* phoneTabBarController.swift */,
 				19DB72DC1FB59A6B00D366AE /* selectViewController.swift */,
 				1930065F1FB42BF700BB7539 /* CustomCell.swift */,
 				191F5E541FAFF731003DB50E /* DateManeger.swift */,
@@ -210,6 +217,7 @@
 				19188F131F9525320033D03D /* TabFirstViewController.swift */,
 				197166C81FAD731800B04AD2 /* tableViewList.swift */,
 				1917F87A1F5AFBB90070C44F /* FirstViewController.swift */,
+				19DB72DE1FB59E7000D366AE /* phoneCustomCell.swift */,
 				1917F87C1F5AFBB90070C44F /* SecondViewController.swift */,
 				1917F8A91F5B0DCF0070C44F /* ThirdViewController.swift */,
 				1917F8AB1F5B0E250070C44F /* FourthViewController.swift */,
@@ -354,6 +362,11 @@
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = EMSSXMF6J2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					1917F88A1F5AFBBA0070C44F = {
 						CreatedOnToolsVersion = 8.3.3;
@@ -579,11 +592,13 @@
 				1917F8791F5AFBB90070C44F /* AppDelegate.swift in Sources */,
 				193006601FB42BF700BB7539 /* CustomCell.swift in Sources */,
 				197166C91FAD731800B04AD2 /* tableViewList.swift in Sources */,
+				19DB72E11FB5AF4600D366AE /* phoneTabBarController.swift in Sources */,
 				1917F8AA1F5B0DCF0070C44F /* ThirdViewController.swift in Sources */,
 				1917F87B1F5AFBB90070C44F /* FirstViewController.swift in Sources */,
 				1917F8AC1F5B0E250070C44F /* FourthViewController.swift in Sources */,
 				19188F1A1F9526160033D03D /* TabFourthViewController.swift in Sources */,
 				19188F1C1F9530920033D03D /* ButtonCustom.swift in Sources */,
+				19DB72DF1FB59E7000D366AE /* phoneCustomCell.swift in Sources */,
 				19188F141F9525320033D03D /* TabFirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -739,6 +754,9 @@
 			baseConfigurationReference = 5C0793666DE55FA8992FF5AD /* Pods-しゅくまる.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "しゅくまる/しゅくまる.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Miyu Sato (43KAU6HLTG)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = EMSSXMF6J2;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -748,8 +766,10 @@
 				INFOPLIST_FILE = "しゅくまる/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.mnmk9497;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shukumaru;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos;
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -760,6 +780,9 @@
 			baseConfigurationReference = 1F8FBA8291DEA0F79C108C0F /* Pods-しゅくまる.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "しゅくまる/しゅくまる.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Miyu Sato (43KAU6HLTG)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = EMSSXMF6J2;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -769,8 +792,10 @@
 				INFOPLIST_FILE = "しゅくまる/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.mnmk9497;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shukumaru;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos;
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

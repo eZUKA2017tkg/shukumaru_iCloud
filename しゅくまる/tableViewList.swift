@@ -103,7 +103,7 @@ class tableViewList: UIViewController, UITableViewDataSource, UITableViewDelegat
         //宿題数の書き換え
         let obj5 = NCMBObject(className: "shukumaru")
         
-        obj5?.objectId = "UmVEpBZ2hXIkWXlH"
+        obj5?.objectId = "09Accleo9VZKpqVD"
         // 設定されたobjectIdを元にデータストアからデータを取得
         obj5?.fetchInBackground({ (error) in
             if error != nil {
@@ -123,8 +123,8 @@ class tableViewList: UIViewController, UITableViewDataSource, UITableViewDelegat
             }
         })
         
-        //宿題リストの書き換え
-        obj5?.objectId = "QIJ1U0hAlvvFRaLO"
+        //宿題リスト1/タイトルの書き換え
+        obj5?.objectId = "M680bXcsyKaAAkei"
         // 設定されたobjectIdを元にデータストアからデータを取得
         obj5?.fetchInBackground({ (error) in
             if error != nil {
@@ -132,7 +132,7 @@ class tableViewList: UIViewController, UITableViewDataSource, UITableViewDelegat
             }else{
                 // 取得に成功した場合の処理
                 // (例)取得したデータの出力
-                obj5?.setObject([self.imgArray[0], self.label2Array[0], 0, 0], forKey: "array")
+                obj5?.setObject([self.imgArray[0], self.label2Array[0]], forKey: "array")
                 // データストアへの保存を実施
                 obj5?.saveInBackground({ (error) in
                     if error != nil {
@@ -144,8 +144,29 @@ class tableViewList: UIViewController, UITableViewDataSource, UITableViewDelegat
             }
         })
         
-            //宿題リストの書き換え
-            obj5?.objectId = "UQcpRuP6pOdVJCsP"
+        //宿題リスト1/状況の書き換え
+        obj5?.objectId = "Wv8z88sLcvg0N1ra"
+        // 設定されたobjectIdを元にデータストアからデータを取得
+        obj5?.fetchInBackground({ (error) in
+            if error != nil {
+                // 取得に失敗した場合の処理
+            }else{
+                // 取得に成功した場合の処理
+                // (例)取得したデータの出力
+                obj5?.setObject([0, 0], forKey: "array")
+                // データストアへの保存を実施
+                obj5?.saveInBackground({ (error) in
+                    if error != nil {
+                        // 保存に失敗した場合の処理
+                    }else{
+                        // 保存に成功した場合の処理
+                    }
+                })
+            }
+        })
+        
+            //宿題リスト2/タイトルの書き換え
+            obj5?.objectId = "gO3I9fNA5YQmbVt7"
             // 設定されたobjectIdを元にデータストアからデータを取得
             obj5?.fetchInBackground({ (error) in
                 if error != nil {
@@ -154,9 +175,9 @@ class tableViewList: UIViewController, UITableViewDataSource, UITableViewDelegat
                     // 取得に成功した場合の処理
                     // (例)取得したデータの出力
                     if shukudaiCount > 1 {
-                        obj5?.setObject([self.imgArray[1], self.label2Array[1], 0, 0], forKey: "array")
+                        obj5?.setObject([self.imgArray[1], self.label2Array[1]], forKey: "array")
                     } else {
-                        obj5?.setObject(["", "", 0, 0], forKey: "array")
+                        obj5?.setObject(["", ""], forKey: "array")
                     }
                     // データストアへの保存を実施
                     obj5?.saveInBackground({ (error) in
@@ -169,8 +190,29 @@ class tableViewList: UIViewController, UITableViewDataSource, UITableViewDelegat
                 }
             })
         
-            //宿題リストの書き換え
-            obj5?.objectId = "a3UE44UvNKJF8jJl"
+        //宿題リスト2/状況の書き換え
+        obj5?.objectId = "UIvdS6cAaYtI40uU"
+        // 設定されたobjectIdを元にデータストアからデータを取得
+        obj5?.fetchInBackground({ (error) in
+            if error != nil {
+                // 取得に失敗した場合の処理
+            }else{
+                // 取得に成功した場合の処理
+                // (例)取得したデータの出力
+                    obj5?.setObject([0, 0], forKey: "array")
+                // データストアへの保存を実施
+                obj5?.saveInBackground({ (error) in
+                    if error != nil {
+                        // 保存に失敗した場合の処理
+                    }else{
+                        // 保存に成功した場合の処理
+                    }
+                })
+            }
+        })
+        
+            //宿題リスト3/タイトルの書き換え
+            obj5?.objectId = "uJwyYrmulpQDanhX"
             // 設定されたobjectIdを元にデータストアからデータを取得
             obj5?.fetchInBackground({ (error) in
                 if error != nil {
@@ -179,9 +221,9 @@ class tableViewList: UIViewController, UITableViewDataSource, UITableViewDelegat
                     // 取得に成功した場合の処理
                     // (例)取得したデータの出力
                     if shukudaiCount > 2 {
-                        obj5?.setObject([self.imgArray[2], self.label2Array[2], 0, 0], forKey: "array")
+                        obj5?.setObject([self.imgArray[2], self.label2Array[2]], forKey: "array")
                     } else {
-                        obj5?.setObject(["", "", 0, 0], forKey: "array")
+                        obj5?.setObject(["", ""], forKey: "array")
                     }
                     // データストアへの保存を実施
                     obj5?.saveInBackground({ (error) in
@@ -194,8 +236,29 @@ class tableViewList: UIViewController, UITableViewDataSource, UITableViewDelegat
                 }
             })
         
-        //宿題リストの書き換え
-        obj5?.objectId = "g0Kkz4Ulv2kz2bzB"
+        //宿題リスト3/状況の書き換え
+        obj5?.objectId = "e1Y1WOjrmstfZyFb"
+        // 設定されたobjectIdを元にデータストアからデータを取得
+        obj5?.fetchInBackground({ (error) in
+            if error != nil {
+                // 取得に失敗した場合の処理
+            }else{
+                // 取得に成功した場合の処理
+                // (例)取得したデータの出力
+                    obj5?.setObject([0, 0], forKey: "array")
+                // データストアへの保存を実施
+                obj5?.saveInBackground({ (error) in
+                    if error != nil {
+                        // 保存に失敗した場合の処理
+                    }else{
+                        // 保存に成功した場合の処理
+                    }
+                })
+            }
+        })
+        
+        //宿題リスト4/タイトルの書き換え
+        obj5?.objectId = "cOKgpMTgkV6yGxIV"
         // 設定されたobjectIdを元にデータストアからデータを取得
         obj5?.fetchInBackground({ (error) in
             if error != nil {
@@ -204,10 +267,31 @@ class tableViewList: UIViewController, UITableViewDataSource, UITableViewDelegat
                 // 取得に成功した場合の処理
                 // (例)取得したデータの出力
                 if shukudaiCount > 3 {
-                    obj5?.setObject([self.imgArray[3], self.label2Array[3], 0, 0], forKey: "array")
+                    obj5?.setObject([self.imgArray[3], self.label2Array[3]], forKey: "array")
                 } else {
-                    obj5?.setObject(["", "", 0, 0], forKey: "array")
+                    obj5?.setObject(["", ""], forKey: "array")
                 }
+                // データストアへの保存を実施
+                obj5?.saveInBackground({ (error) in
+                    if error != nil {
+                        // 保存に失敗した場合の処理
+                    }else{
+                        // 保存に成功した場合の処理
+                    }
+                })
+            }
+        })
+        
+        //宿題リスト4/状況の書き換え
+        obj5?.objectId = "SBxh0QFzacDZlmKO"
+        // 設定されたobjectIdを元にデータストアからデータを取得
+        obj5?.fetchInBackground({ (error) in
+            if error != nil {
+                // 取得に失敗した場合の処理
+            }else{
+                // 取得に成功した場合の処理
+                // (例)取得したデータの出力
+                    obj5?.setObject([0, 0], forKey: "array")
                 // データストアへの保存を実施
                 obj5?.saveInBackground({ (error) in
                     if error != nil {
