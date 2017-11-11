@@ -35,7 +35,8 @@ class phoneCustomCell: UITableViewCell {
     @IBOutlet weak var iconView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tapView: ButtomCustom!
-    @IBOutlet weak var hanamaruBtn: UIImageView!
+
+    @IBOutlet weak var hanamaruBtn: UIButton!
     
     weak var delegate: CustomTableViewPhoneCellDelegate!
     
@@ -44,52 +45,25 @@ class phoneCustomCell: UITableViewCell {
     var cellObject: setPhoneCell! {
         didSet {
             
-            let obj5 = NCMBObject(className: "shukumaru")
-            var titleArray:Array = [String(), String()]
-            var zyoukyouArray:Array = [Int(), Int()]
+            iconView.image = UIImage(named: cellObject.iconView)
+            titleLabel.text = cellObject.title as String
+            print(cellObject.title)
             
-            obj5?.objectId = "M680bXcsyKaAAkei"
-            // 設定されたobjectIdを元にデータストアからデータを取得
-            obj5?.fetchInBackground({ (error) in
-                if error != nil {
-                    // 取得に失敗した場合の処理
-                }else{
-                    // 取得に成功した場合の処理
-                    // (例)取得したデータの出力
-                    titleArray = obj5!.object(forKey: "array") as! [String]
-                    self.iconView.image = UIImage(named: titleArray[0] as String)
-                    self.titleLabel.text = String(describing: titleArray[1] as String)
-                    print(titleArray[0])
-                    print(titleArray[1])
-                }
-            })
-            
-            obj5?.objectId = "Wv8z88sLcvg0N1ra"
-            // 設定されたobjectIdを元にデータストアからデータを取得
-            obj5?.fetchInBackground({ (error) in
-                if error != nil {
-                    // 取得に失敗した場合の処理
-                }else{
-                    // 取得に成功した場合の処理
-                    // (例)取得したデータの出力
-                    zyoukyouArray = obj5!.object(forKey: "array") as! [Int]
-                    if zyoukyouArray[0] == 0 {
-                        self.tapView?.setTitle("未", for: .normal)
-                        self.tapView?.setTitleColor(UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
-                        self.tapView?.backgroundColor = UIColor(red: 48/255, green: 148/255, blue: 137/255, alpha: 1.0)
-                    }else if zyoukyouArray[0] == 1 {
-                        self.tapView?.setTitle("済", for: .normal)
-                        self.tapView?.setTitleColor(UIColor(red: 48/255, green: 148/255, blue: 137/255, alpha: 1.0), for: .normal)
-                        self.tapView?.backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-                    }
-                    if zyoukyouArray[1] == 0 {
-                        self.hanamaruBtn?.image = UIImage(named: "はなまるoff")
-                    }else if zyoukyouArray[1] == 1 {
-                        self.hanamaruBtn?.image = UIImage(named: "はなまる")
-                    }
-                }
-            })
-    
+            if cellObject.tapView == 0 {
+                tapView?.setTitle("これから!", for: .normal)
+                tapView?.setTitleColor(UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
+                tapView?.backgroundColor = UIColor(red: 48/255, green: 148/255, blue: 137/255, alpha: 1.0)
+            }else if cellObject.tapView == 1 {
+                tapView?.setTitle("おわった!", for: .normal)
+                tapView?.setTitleColor(UIColor(red: 48/255, green: 148/255, blue: 137/255, alpha: 1.0), for: .normal)
+                tapView?.backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            }
+            if cellObject.hanamaruBtn == 0 {
+                hanamaruBtn?.setBackgroundImage(UIImage(named: "はなまるoff"), for: .normal)
+            }else if cellObject.hanamaruBtn == 1 {
+                hanamaruBtn?.setBackgroundImage(UIImage(named: "はなまる"), for: .normal)
+            }
+
         }
         
     }

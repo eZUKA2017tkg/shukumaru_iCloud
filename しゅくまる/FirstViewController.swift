@@ -27,6 +27,8 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     @IBOutlet weak var Finish: UILabel!
     
+    @IBOutlet weak var tableView: UITableView!
+    
     
     
     override func viewDidLoad() {
@@ -34,29 +36,9 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         var shukudaiCount:Int = 0//宿題数を計算する値
         var finishCount:Int = 0 //終わった数を計算する値
-        
-        
-        //宿題数の読み込み
-        let obj5 = NCMBObject(className: "shukumaru")
-        
-        obj5?.objectId = "09Accleo9VZKpqVD"
-        // 設定されたobjectIdを元にデータストアからデータを取得
-        obj5?.fetchInBackground({ (error) in
-            if error != nil {
-                // 取得に失敗した場合の処理
-            }else{
-                // 取得に成功した場合の処理
-                // (例)取得したデータの出力
-                shukudaiCount = obj5?.object(forKey: "number") as! Int
-                self.Shukudaisuu.text = shukudaiCount.description
-                self.Shukudaisuu2.text = shukudaiCount.description
-            }
-        })
 
-        img2Array = [Int](repeating: 0, count: label2Array.count)
-        buttonArray = [Int](repeating: 0, count: label2Array.count)
-        img2Array = [Int](repeating: 0, count: label2Array.count)
-        buttonArray = [Int](repeating: 0, count: label2Array.count)
+        let store  = NSUbiquitousKeyValueStore.default()
+        shukudaiCount = Int(store.longLong(forKey: "宿題数"))
         
         for num in 0 ..< label2Array.count {
             finishCount += buttonArray[num]
@@ -76,11 +58,66 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         let todayFormatter:DateFormatter = DateFormatter()
         todayFormatter.dateFormat = "yyyy" + "MM" + "d"
         
+        var titleArray:Array = [String(), String()]
+        var zyoutaiArray:Array = [Int(), Int()]
+        
+        
+        if shukudaiCount > 0 {
+            titleArray = store.array(forKey: "宿題リスト1/タイトル") as! [String]
+            
+
+            imgArray.append(titleArray[0])
+            label2Array.append(titleArray[1])
+            zyoutaiArray = store.array(forKey: "宿題リスト1/状況") as! [Int]
+
+            img2Array.append(zyoutaiArray[0])
+            buttonArray.append(zyoutaiArray[1])
+            
+        }
+        
+        
+        if shukudaiCount > 1 {
+            titleArray = store.array(forKey: "宿題リスト2/タイトル") as! [String]
+            
+            
+            imgArray.append(titleArray[0])
+            label2Array.append(titleArray[1])
+            zyoutaiArray = store.array(forKey: "宿題リスト2/状況") as! [Int]
+            
+            img2Array.append(zyoutaiArray[0])
+            buttonArray.append(zyoutaiArray[1])
+        }
+        
+        if shukudaiCount > 2 {
+            titleArray = store.array(forKey: "宿題リスト3/タイトル") as! [String]
+            
+            
+            imgArray.append(titleArray[0])
+            label2Array.append(titleArray[1])
+            zyoutaiArray = store.array(forKey: "宿題リスト3/状況") as! [Int]
+            
+            img2Array.append(zyoutaiArray[0])
+            buttonArray.append(zyoutaiArray[1])
+        }
+        
+        if shukudaiCount > 3 {
+            titleArray = store.array(forKey: "宿題リスト4/タイトル") as! [String]
+            
+            
+            imgArray.append(titleArray[0])
+            label2Array.append(titleArray[1])
+            zyoutaiArray = store.array(forKey: "宿題リスト4/状況") as! [Int]
+            
+            img2Array.append(zyoutaiArray[0])
+            buttonArray.append(zyoutaiArray[1])
+            
+        }
+ 
     }
     
     //TableViewセルの数を指定
     func tableView(_ table: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return 4
+        return label2Array.count
     }
     
     
@@ -90,7 +127,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         //tableCellのIDでUITableViewCellのインスタンスを生成
         let cell = table.dequeueReusableCell(withIdentifier: "phoneCustomCell", for: indexPath) as! phoneCustomCell
 
-        cell.cellObject = setPhoneCell(icon: "", title: "", tapBtnStates: 0, hanamaruStates:0)
+        cell.cellObject = setPhoneCell(icon: imgArray[indexPath.row], title: label2Array[indexPath.row], tapBtnStates: img2Array[indexPath.row], hanamaruStates:buttonArray[indexPath.row])
         
         cell.delegate = self
         
