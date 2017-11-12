@@ -28,6 +28,8 @@ class tableViewList: UIViewController, UITableViewDataSource, UITableViewDelegat
     @IBOutlet weak var todayLabel: UILabel!
 
     @IBOutlet weak var tableView: UITableView!
+    
+    var reloadHantei = 0
 
     
     override func viewDidLoad() {
@@ -102,45 +104,53 @@ class tableViewList: UIViewController, UITableViewDataSource, UITableViewDelegat
         let store  = NSUbiquitousKeyValueStore.default()
 
         store.removeObject(forKey: "宿題数")
+
         store.removeObject(forKey: "宿題リスト1/タイトル")
+
         store.removeObject(forKey: "宿題リスト1/状況")
+
+
         store.removeObject(forKey: "宿題リスト2/タイトル")
+
+
         store.removeObject(forKey: "宿題リスト2/状況")
+
+
         store.removeObject(forKey: "宿題リスト3/タイトル")
+
+
         store.removeObject(forKey: "宿題リスト3/状況")
+
+
         store.removeObject(forKey: "宿題リスト4/タイトル")
+
+
         store.removeObject(forKey: "宿題リスト4/状況")
+ 
+        store.synchronize()
 
         store.set(shukudaiCount, forKey: "宿題数")
 
         if shukudaiCount > 0 {
         store.set([imgArray[0], label2Array[0]], forKey: "宿題リスト1/タイトル")
-        store.synchronize()
         store.set([0, 0], forKey: "宿題リスト1/状況")
-        }else {
-            store.set(["", ""], forKey: "宿題リスト1/タイトル")
-            store.synchronize()
-            store.set([0, 0], forKey: "宿題リスト1/状況")
         }
         
         if shukudaiCount > 1 {
         store.set([imgArray[1], label2Array[1]], forKey: "宿題リスト2/タイトル")
-            store.synchronize()
         store.set([0, 0], forKey: "宿題リスト2/状況")
         }
         
         if shukudaiCount > 2 {
         store.set([imgArray[2], label2Array[2]], forKey: "宿題リスト3/タイトル")
-            store.synchronize()
         store.set([0, 0], forKey: "宿題リスト3/状況")
         }
         
         if shukudaiCount > 3 {
         store.set([imgArray[3], label2Array[3]], forKey: "宿題リスト4/タイトル")
-            store.synchronize()
         store.set([0, 0], forKey: "宿題リスト4/状況")
         }
-
+        
         store.synchronize()
         
         //通知センターの設定
@@ -153,19 +163,20 @@ class tableViewList: UIViewController, UITableViewDataSource, UITableViewDelegat
         //iCloudのデータが変更された時の処理
         //通知オブジェクトから渡ってくるデータを取得
         print("成功")
-        let store  = NSUbiquitousKeyValueStore.default()
-        let shukudaiCount = Int(store.longLong(forKey: "宿題数"))
         
-        buttonArray = []
-        img2Array = []
-        
-        var titleArray:Array = [String(), String()]
-        var zyoutaiArray:Array = [Int(), Int()]
-        
+        if reloadHantei > 0 {
         if let info = notification.userInfo {
             //TableViewセルの数を指定
             
             print("成功")
+            
+            let store  = NSUbiquitousKeyValueStore.default()
+            let shukudaiCount = Int(store.longLong(forKey: "宿題数"))
+            
+            buttonArray = []
+            img2Array = []
+            
+            var zyoutaiArray:Array = [Int(), Int()]
             
             if shukudaiCount > 0 {
                 zyoutaiArray = store.array(forKey: "宿題リスト1/状況") as! [Int]
@@ -199,7 +210,8 @@ class tableViewList: UIViewController, UITableViewDataSource, UITableViewDelegat
 
             tableView.reloadData()
         }
-        
+        }
+        reloadHantei = 1
     }
     
     

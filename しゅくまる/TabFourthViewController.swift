@@ -28,6 +28,9 @@ class TabFourthViewController: UIViewController, UICollectionViewDataSource, UIC
     var today = Date()
     let weekArray = ["にち", "げつ", "か", "すい", "もく", "きん", "ど"]
     
+    let now = Date() // 現在日時の取得
+    let todayDateFormatter = DateFormatter()
+    
     
     @IBOutlet weak var calenderHeaderView: UIView!
     
@@ -38,6 +41,12 @@ class TabFourthViewController: UIViewController, UICollectionViewDataSource, UIC
     @IBOutlet weak var headerNextBtn: UIButton!
     
     @IBOutlet weak var calenderCollectionView: UICollectionView!
+    
+    @IBOutlet weak var hanamaruCounter: UILabel!
+    
+    @IBOutlet weak var hanamaruCounter2: UILabel!
+    
+    var finishCount = 0
      
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +55,60 @@ class TabFourthViewController: UIViewController, UICollectionViewDataSource, UIC
         calenderCollectionView.delegate = self
         calenderCollectionView.dataSource = self
         headerTitle.text = changeHeaderTitle()
+        
+        finishCount = 0
+        
+        let store  = NSUbiquitousKeyValueStore.default()
+        
+        var shukudaiCount = Int(store.longLong(forKey: "宿題数"))
+        
+        var zyoutaiArray:Array = [Int(), Int()]
+        
+        
+        if shukudaiCount > 0 {
+            zyoutaiArray = store.array(forKey: "宿題リスト1/状況") as! [Int]
+            finishCount += zyoutaiArray[1]
+        }
+        
+        
+        if shukudaiCount > 1 {
+            zyoutaiArray = store.array(forKey: "宿題リスト2/状況") as! [Int]
+            finishCount += zyoutaiArray[1]
+        }
+        
+        if shukudaiCount > 2 {
+            zyoutaiArray = store.array(forKey: "宿題リスト3/状況") as! [Int]
+            finishCount += zyoutaiArray[1]
+        }
+        
+        if shukudaiCount > 3 {
+            zyoutaiArray = store.array(forKey: "宿題リスト4/状況") as! [Int]
+            finishCount += zyoutaiArray[1]
+            
+        }
+        
+        todayDateFormatter.dateFormat = "d" // 日付フォーマットの設定
+        
+        hanamaruCounter.text = finishCount.description
+        hanamaruCounter2.text = finishCount.description
+        
+        //通知センターの設定
+        let center = NotificationCenter.default
+        center.addObserver(self,selector: #selector(ubiquitousDataDidChange), name: NSUbiquitousKeyValueStore.didChangeExternallyNotification,object: nil)
+    }
+    
+    func ubiquitousDataDidChange(notification: NSNotification) {
+        //iCloudのデータが変更された時の処理
+        //通知オブジェクトから渡ってくるデータを取得
+        print("成功")
+        let store  = NSUbiquitousKeyValueStore.default()
+        if let info = notification.userInfo {
+            //TableViewセルの数を指定
+            print("成功")
+            loadView()
+            viewDidLoad()
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -89,7 +152,16 @@ class TabFourthViewController: UIViewController, UICollectionViewDataSource, UIC
             Btn?.setBackgroundImage(UIImage(named: "nil"), for: .normal)
         }else {
             cell.textLabel?.text = dateManager.conversionDateFormat(indexPath: indexPath)
+
             Btn?.setBackgroundImage(UIImage(named: "nil"), for: .normal)
+            if finishCount > 0 {
+                if cell.textLabel.text == todayDateFormatter.string(from: now) {
+                print("成功")
+                    Btn?.setBackgroundImage(UIImage(named: "はなまるカレンダー"), for: .normal)
+                    Btn?.setTitle(finishCount.description, for: .normal)
+                    Btn?.setTitleColor(UIColor(red: 216/255, green: 40/255, blue: 45/255, alpha: 1.0), for: .normal)
+                }
+            }
             //月によって1日の場所は異なる
             
         }
