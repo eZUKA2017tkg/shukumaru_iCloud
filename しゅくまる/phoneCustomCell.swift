@@ -31,12 +31,11 @@ protocol CustomTableViewPhoneCellDelegate: class {
 
 class phoneCustomCell: UITableViewCell {
     
-    
     @IBOutlet weak var iconView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tapView: ButtomCustom!
-
     @IBOutlet weak var hanamaruBtn: UIButton!
+
     
     weak var delegate: CustomTableViewPhoneCellDelegate!
     
@@ -69,72 +68,77 @@ class phoneCustomCell: UITableViewCell {
     }
 
     @IBAction func hanamaruTap(_ sender: Any) {
-       /*
-        let store  = NSUbiquitousKeyValueStore.default()
-        var hanteiArray = store.array(forKey: "宿題リスト1/タイトル")
-
-        if titleLabel.text == (hanteiArray?[1] as! String) {
+        
+        if cellObject.hanamaruBtn == 0 {
+        
+         let store  = NSUbiquitousKeyValueStore.default()
+         var hanteiArray = store.array(forKey: "宿題リスト1/タイトル")
+         
+         if titleLabel.text == (hanteiArray?[1] as! String) {
+         
+         var colorHanteiArray = store.array(forKey: "宿題リスト1/状況")
+         
+         if (colorHanteiArray?[0] as! Int) == 1 {
+         
+         hanamaruBtn?.setBackgroundImage(UIImage(named: "はなまる"), for: .normal)
+         store.removeObject(forKey: "宿題リスト1/状況")
+         store.set([1, 1], forKey: "宿題リスト1/状況")
+         store.synchronize()
+         }
+         
+         }else {
+         hanteiArray = store.array(forKey: "宿題リスト2/タイトル")
+         if titleLabel.text == (hanteiArray?[1] as! String) {
+         
+         var colorHanteiArray = store.array(forKey: "宿題リスト2/状況")
+         
+         if (colorHanteiArray?[0] as! Int) == 1 {
+         
+         hanamaruBtn?.setBackgroundImage(UIImage(named: "はなまる"), for: .normal)
+         store.removeObject(forKey: "宿題リスト2/状況")
+         store.set([1, 1], forKey: "宿題リスト2/状況")
+         store.synchronize()
+         }
+         }else {
+         hanteiArray = store.array(forKey: "宿題リスト3/タイトル")
+         if titleLabel.text == (hanteiArray?[1] as! String) {
+         
+         var colorHanteiArray = store.array(forKey: "宿題リスト3/状況")
+         
+         if (colorHanteiArray?[0] as! Int) == 1 {
+         
+         hanamaruBtn?.setBackgroundImage(UIImage(named: "はなまる"), for: .normal)
+         store.removeObject(forKey: "宿題リスト3/状況")
+         store.set([1, 1], forKey: "宿題リスト3/状況")
+         store.synchronize()
+         }
+         }else {
+         hanteiArray = store.array(forKey: "宿題リスト4/タイトル")
+         if titleLabel.text == (hanteiArray?[1] as! String) {
+         
+         var colorHanteiArray = store.array(forKey: "宿題リスト4/状況")
+         
+         if (colorHanteiArray?[0] as! Int) == 1 {
+         
+         hanamaruBtn?.setBackgroundImage(UIImage(named: "はなまる"), for: .normal)
+         store.removeObject(forKey: "宿題リスト4/状況")
+         store.set([1, 1], forKey: "宿題リスト4/状況")
+         store.synchronize()
+         }
+         }
+         }
+         }
+         }
             
-            var colorHanteiArray = store.array(forKey: "宿題リスト1/状況")
-            
-            if (colorHanteiArray?[0] as! Int) == 1 {
-                
-                hanamaruBtn?.setBackgroundImage(UIImage(named: "はなまる"), for: .normal)
-                store.removeObject(forKey: "宿題リスト1/状況")
-                store.set([1, 1], forKey: "宿題リスト1/状況")
-                store.synchronize()
-            }
-            
-        }else {
-                hanteiArray = store.array(forKey: "宿題リスト2/タイトル")
-                if titleLabel.text == (hanteiArray?[1] as! String) {
-                    
-                    var colorHanteiArray = store.array(forKey: "宿題リスト1/状況")
-                    
-                    if (colorHanteiArray?[0] as! Int) == 1 {
-                        
-                        hanamaruBtn?.setBackgroundImage(UIImage(named: "はなまる"), for: .normal)
-                        store.removeObject(forKey: "宿題リスト2/状況")
-                        store.set([1, 1], forKey: "宿題リスト2/状況")
-                        store.synchronize()
-                    }
-                }else {
-                    hanteiArray = store.array(forKey: "宿題リスト3/タイトル")
-                    if titleLabel.text == (hanteiArray?[1] as! String) {
-                        
-                        var colorHanteiArray = store.array(forKey: "宿題リスト3/状況")
-                        
-                        if (colorHanteiArray?[0] as! Int) == 1 {
-                            
-                            hanamaruBtn?.setBackgroundImage(UIImage(named: "はなまる"), for: .normal)
-                            store.removeObject(forKey: "宿題リスト3/状況")
-                            store.set([1, 1], forKey: "宿題リスト3/状況")
-                            store.synchronize()
-                        }
-                    }else {
-                        hanteiArray = store.array(forKey: "宿題リスト4/タイトル")
-                        if titleLabel.text == (hanteiArray?[1] as! String) {
-                            
-                            var colorHanteiArray = store.array(forKey: "宿題リスト4/状況")
-                            
-                            if (colorHanteiArray?[0] as! Int) == 1 {
-                                
-                                hanamaruBtn?.setBackgroundImage(UIImage(named: "はなまる"), for: .normal)
-                                store.removeObject(forKey: "宿題リスト4/状況")
-                                store.set([1, 1], forKey: "宿題リスト4/状況")
-                                store.synchronize()
-                            }
-                    }
-                }
+            if tapView.title(for: .normal) == "済" && hanamaruBtn.backgroundImage(for: .normal) == UIImage(named: "はなまる") {
+         cellObject.hanamaruBtn = 1
+         // DelegateでViewControllerに処理を渡す
+         delegate?.updateCellObject(object: cellObject)
             }
         }
-               cellObject.hanamaruBtn = 1
-        // DelegateでViewControllerに処理を渡す
-        delegate?.updateCellObject(object: cellObject)
-        */
+        
     }
-
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

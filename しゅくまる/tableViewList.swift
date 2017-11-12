@@ -33,10 +33,8 @@ class tableViewList: UIViewController, UITableViewDataSource, UITableViewDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        imgArray = [String](repeating: "", count: label2Array.count)
 
-    
+        imgArray = [String](repeating: "", count: label2Array.count)
     
         for n in 0..<label2Array.count {
     
@@ -114,8 +112,6 @@ class tableViewList: UIViewController, UITableViewDataSource, UITableViewDelegat
         store.removeObject(forKey: "宿題リスト4/状況")
 
         store.set(shukudaiCount, forKey: "宿題数")
-        
-        
 
         if shukudaiCount > 0 {
         store.set([imgArray[0], label2Array[0]], forKey: "宿題リスト1/タイトル")
@@ -146,10 +142,65 @@ class tableViewList: UIViewController, UITableViewDataSource, UITableViewDelegat
         }
 
         store.synchronize()
+        
+        //通知センターの設定
+        let center = NotificationCenter.default
+        center.addObserver(self,selector: #selector(ubiquitousDataDidChange), name: NSUbiquitousKeyValueStore.didChangeExternallyNotification,object: nil)
+
     }
     
-    
+    func ubiquitousDataDidChange(notification: NSNotification) {
+        //iCloudのデータが変更された時の処理
+        //通知オブジェクトから渡ってくるデータを取得
+        print("成功")
+        let store  = NSUbiquitousKeyValueStore.default()
+        let shukudaiCount = Int(store.longLong(forKey: "宿題数"))
+        
+        buttonArray = []
+        img2Array = []
+        
+        var titleArray:Array = [String(), String()]
+        var zyoutaiArray:Array = [Int(), Int()]
+        
+        if let info = notification.userInfo {
+            //TableViewセルの数を指定
+            
+            print("成功")
+            
+            if shukudaiCount > 0 {
+                zyoutaiArray = store.array(forKey: "宿題リスト1/状況") as! [Int]
+                
+                buttonArray.append(zyoutaiArray[0])
+                img2Array.append(zyoutaiArray[1])
+                
+            }
+            
+            if shukudaiCount > 1 {
+                zyoutaiArray = store.array(forKey: "宿題リスト2/状況") as! [Int]
+                
+                buttonArray.append(zyoutaiArray[0])
+                img2Array.append(zyoutaiArray[1])
+            }
+            
+            if shukudaiCount > 2 {
+                zyoutaiArray = store.array(forKey: "宿題リスト3/状況") as! [Int]
+                
+                buttonArray.append(zyoutaiArray[0])
+                img2Array.append(zyoutaiArray[1])
+            }
+            
+            if shukudaiCount > 3 {
+                zyoutaiArray = store.array(forKey: "宿題リスト4/状況") as! [Int]
+                
+                buttonArray.append(zyoutaiArray[0])
+                img2Array.append(zyoutaiArray[1])
+                
+            }
 
+            tableView.reloadData()
+        }
+        
+    }
     
     
     //TableViewセルの数を指定

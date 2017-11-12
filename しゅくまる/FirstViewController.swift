@@ -18,6 +18,8 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     var img2Array = Array<Int>()
     var buttonArray = Array<Int>()
     
+      var refreshControl:UIRefreshControl!
+    
     
     @IBOutlet weak var TodayLabel: UILabel!
     
@@ -29,6 +31,8 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var reloadView: UIView!
+    
     
     
     override func viewDidLoad() {
@@ -36,6 +40,10 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         var shukudaiCount:Int = 0//宿題数を計算する値
         var finishCount:Int = 0 //終わった数を計算する値
+    
+        //通知センターの設定
+        let center = NotificationCenter.default
+        center.addObserver(self,selector: #selector(ubiquitousDataDidChange), name: NSUbiquitousKeyValueStore.didChangeExternallyNotification,object: nil)
 
         let store  = NSUbiquitousKeyValueStore.default()
         shukudaiCount = Int(store.longLong(forKey: "宿題数"))
@@ -115,6 +123,8 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         Finish.text = String(finishCount)
         shukudaiToCount()
+
+    
     }
     
     @IBOutlet weak var image1: UIImageView!
@@ -138,6 +148,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
         Finish.text = count.description
         
+        if count != 0 {
         if 12/label2Array.count*count >= 3 {
             image1.backgroundColor = UIColor(red: 48/255, green: 148/255, blue: 137/255, alpha: 1.0)
             image2.backgroundColor = UIColor(red: 48/255, green: 148/255, blue: 137/255, alpha: 1.0)
@@ -164,8 +175,28 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
             image11.backgroundColor = UIColor(red: 48/255, green: 148/255, blue: 137/255, alpha: 1.0)
             image12.backgroundColor = UIColor(red: 48/255, green: 148/255, blue: 137/255, alpha: 1.0)
         }
+        }
         
-        
+    }
+    
+
+    func ubiquitousDataDidChange(notification: NSNotification) {
+        //iCloudのデータが変更された時の処理
+        //通知オブジェクトから渡ってくるデータを取得
+                    print("成功")
+        let store  = NSUbiquitousKeyValueStore.default()
+        if let info = notification.userInfo {
+            //TableViewセルの数を指定
+            imgArray = []
+            label2Array = []
+            img2Array = []
+            buttonArray = []
+            
+            print("成功")
+            loadView()
+            viewDidLoad()
+        }
+
     }
     
     //TableViewセルの数を指定
