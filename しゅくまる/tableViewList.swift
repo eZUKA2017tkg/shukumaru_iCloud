@@ -164,7 +164,6 @@ class tableViewList: UIViewController, UITableViewDataSource, UITableViewDelegat
         //通知オブジェクトから渡ってくるデータを取得
         print("成功")
         
-        if reloadHantei > 0 {
         if let info = notification.userInfo {
             //TableViewセルの数を指定
             
@@ -210,8 +209,6 @@ class tableViewList: UIViewController, UITableViewDataSource, UITableViewDelegat
 
             tableView.reloadData()
         }
-        }
-        reloadHantei = 1
     }
     
     
