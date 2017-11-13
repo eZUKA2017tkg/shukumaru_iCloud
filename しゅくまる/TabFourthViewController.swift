@@ -105,8 +105,41 @@ class TabFourthViewController: UIViewController, UICollectionViewDataSource, UIC
         if let info = notification.userInfo {
             //TableViewセルの数を指定
             print("成功")
-            loadView()
-            viewDidLoad()
+            
+            finishCount = 0
+            
+            let shukudaiCount = Int(store.longLong(forKey: "宿題数"))
+            
+            var zyoutaiArray:Array = [Int(), Int()]
+            
+            
+            if shukudaiCount > 0 {
+                zyoutaiArray = store.array(forKey: "宿題リスト1/状況") as! [Int]
+                finishCount += zyoutaiArray[1]
+            }
+            
+            
+            if shukudaiCount > 1 {
+                zyoutaiArray = store.array(forKey: "宿題リスト2/状況") as! [Int]
+                finishCount += zyoutaiArray[1]
+            }
+            
+            if shukudaiCount > 2 {
+                zyoutaiArray = store.array(forKey: "宿題リスト3/状況") as! [Int]
+                finishCount += zyoutaiArray[1]
+            }
+            
+            if shukudaiCount > 3 {
+                zyoutaiArray = store.array(forKey: "宿題リスト4/状況") as! [Int]
+                finishCount += zyoutaiArray[1]
+                
+            }
+            
+            
+            hanamaruCounter.text = finishCount.description
+            hanamaruCounter2.text = finishCount.description
+            
+            calenderCollectionView.reloadData()
         }
         
     }
@@ -154,12 +187,17 @@ class TabFourthViewController: UIViewController, UICollectionViewDataSource, UIC
             cell.textLabel?.text = dateManager.conversionDateFormat(indexPath: indexPath)
 
             Btn?.setBackgroundImage(UIImage(named: "nil"), for: .normal)
+            Btn?.setTitle("", for: .normal)
             if finishCount > 0 {
+                let kakuninformatter: DateFormatter = DateFormatter()
+                kakuninformatter.dateFormat = "M"
+                if kakuninformatter.string(from: now as Date) == kakuninformatter.string(from: selectedDate as Date) {
                 if cell.textLabel.text == todayDateFormatter.string(from: now) {
                 print("成功")
                     Btn?.setBackgroundImage(UIImage(named: "はなまるカレンダー"), for: .normal)
                     Btn?.setTitle(finishCount.description, for: .normal)
                     Btn?.setTitleColor(UIColor(red: 216/255, green: 40/255, blue: 45/255, alpha: 1.0), for: .normal)
+                    }
                 }
             }
             //月によって1日の場所は異なる

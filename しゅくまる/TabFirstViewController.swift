@@ -293,6 +293,106 @@ class TabFirstViewController: UIViewController, UITableViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "mySegue") {
             ataiwatashi()
+            
+            
+            var imgArray = [String](repeating: "", count: label2Array.count)
+            
+            for n in 0..<label2Array.count {
+                
+                switch label2Array[n]{
+                    
+                case "かんじドリル":
+                    imgArray[n] = "かんじドリルai"
+                    break
+                case "けいさんドリル":
+                    imgArray[n] = "けいさんドリルai"
+                    break
+                case "さくぶん":
+                    imgArray[n] = "さくぶんai"
+                    break
+                case "おんどく":
+                    imgArray[n] = "おんどくai"
+                    break
+                case "こくご":
+                    imgArray[n] = "こくごai"
+                    break
+                case "さんすう":
+                    imgArray[n] = "さんすうai"
+                    break
+                case "しゃかい":
+                    imgArray[n] = "しゃかいai"
+                    break
+                case "りか":
+                    imgArray[n] = "りかai"
+                    break
+                case "がいこくご":
+                    imgArray[n] = "そのたai"
+                    break
+                default:
+                    break
+                }
+            }
+            
+            
+            var shukudaiCount:Int = 0//宿題数を計算する値
+            
+            shukudaiCount = label2Array.count
+            
+            
+            
+            let store  = NSUbiquitousKeyValueStore.default()
+            
+            store.removeObject(forKey: "宿題数")
+            
+            store.removeObject(forKey: "宿題リスト1/タイトル")
+            
+            store.removeObject(forKey: "宿題リスト1/状況")
+            
+            
+            store.removeObject(forKey: "宿題リスト2/タイトル")
+            
+            
+            store.removeObject(forKey: "宿題リスト2/状況")
+            
+            
+            store.removeObject(forKey: "宿題リスト3/タイトル")
+            
+            
+            store.removeObject(forKey: "宿題リスト3/状況")
+            
+            
+            store.removeObject(forKey: "宿題リスト4/タイトル")
+            
+            
+            store.removeObject(forKey: "宿題リスト4/状況")
+            
+            store.synchronize()
+            
+            store.set(shukudaiCount, forKey: "宿題数")
+            
+            if shukudaiCount > 0 {
+                store.set([imgArray[0], label2Array[0]], forKey: "宿題リスト1/タイトル")
+                store.set([0, 0], forKey: "宿題リスト1/状況")
+            }
+            
+            if shukudaiCount > 1 {
+                store.set([imgArray[1], label2Array[1]], forKey: "宿題リスト2/タイトル")
+                store.set([0, 0], forKey: "宿題リスト2/状況")
+            }
+            
+            if shukudaiCount > 2 {
+                store.set([imgArray[2], label2Array[2]], forKey: "宿題リスト3/タイトル")
+                store.set([0, 0], forKey: "宿題リスト3/状況")
+            }
+            
+            if shukudaiCount > 3 {
+                store.set([imgArray[3], label2Array[3]], forKey: "宿題リスト4/タイトル")
+                store.set([0, 0], forKey: "宿題リスト4/状況")
+            }
+            
+            store.synchronize()
+
+            
             let secondViewController:tableViewList = segue.destination as! tableViewList
             secondViewController.label2Array = self.label2Array
         }

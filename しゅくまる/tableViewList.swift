@@ -101,57 +101,6 @@ class tableViewList: UIViewController, UITableViewDataSource, UITableViewDelegat
         todayFormatter.dateFormat = "yyyy" + "MM" + "d"
         
 
-        let store  = NSUbiquitousKeyValueStore.default()
-
-        store.removeObject(forKey: "宿題数")
-
-        store.removeObject(forKey: "宿題リスト1/タイトル")
-
-        store.removeObject(forKey: "宿題リスト1/状況")
-
-
-        store.removeObject(forKey: "宿題リスト2/タイトル")
-
-
-        store.removeObject(forKey: "宿題リスト2/状況")
-
-
-        store.removeObject(forKey: "宿題リスト3/タイトル")
-
-
-        store.removeObject(forKey: "宿題リスト3/状況")
-
-
-        store.removeObject(forKey: "宿題リスト4/タイトル")
-
-
-        store.removeObject(forKey: "宿題リスト4/状況")
- 
-        store.synchronize()
-
-        store.set(shukudaiCount, forKey: "宿題数")
-
-        if shukudaiCount > 0 {
-        store.set([imgArray[0], label2Array[0]], forKey: "宿題リスト1/タイトル")
-        store.set([0, 0], forKey: "宿題リスト1/状況")
-        }
-        
-        if shukudaiCount > 1 {
-        store.set([imgArray[1], label2Array[1]], forKey: "宿題リスト2/タイトル")
-        store.set([0, 0], forKey: "宿題リスト2/状況")
-        }
-        
-        if shukudaiCount > 2 {
-        store.set([imgArray[2], label2Array[2]], forKey: "宿題リスト3/タイトル")
-        store.set([0, 0], forKey: "宿題リスト3/状況")
-        }
-        
-        if shukudaiCount > 3 {
-        store.set([imgArray[3], label2Array[3]], forKey: "宿題リスト4/タイトル")
-        store.set([0, 0], forKey: "宿題リスト4/状況")
-        }
-        
-        store.synchronize()
         
         //通知センターの設定
         let center = NotificationCenter.default
