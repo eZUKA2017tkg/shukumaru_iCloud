@@ -58,7 +58,11 @@ class phoneCustomCell: UITableViewCell {
                 tapView?.backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
             }
             if cellObject.hanamaruBtn == 0 {
-                hanamaruBtn?.setBackgroundImage(UIImage(named: "はなまるoff"), for: .normal)
+                if cellObject.tapView == 0 {
+                    hanamaruBtn?.setBackgroundImage(UIImage(named: ""), for: .normal)
+                }else {
+                    hanamaruBtn?.setBackgroundImage(UIImage(named: "はなまるoff"), for: .normal)
+                }
             }else if cellObject.hanamaruBtn == 1 {
                 hanamaruBtn?.setBackgroundImage(UIImage(named: "はなまる"), for: .normal)
             }
