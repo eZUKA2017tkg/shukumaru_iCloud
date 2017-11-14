@@ -25,6 +25,7 @@
 		19188F1C1F9530920033D03D /* ButtonCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19188F1B1F9530920033D03D /* ButtonCustom.swift */; };
 		19188F1E1F953DBE0033D03D /* shukudaiTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19188F1D1F953DBE0033D03D /* shukudaiTableCell.swift */; };
 		191B3F471FBAEC4100FEC364 /* tsuutiCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191B3F461FBAEC4100FEC364 /* tsuutiCustomCell.swift */; };
+		191B3F4B1FBB238B00FEC364 /* timeSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191B3F4A1FBB238B00FEC364 /* timeSetViewController.swift */; };
 		191F5E551FAFF731003DB50E /* DateManeger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191F5E541FAFF731003DB50E /* DateManeger.swift */; };
 		191F5E571FAFF75D003DB50E /* CalenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191F5E561FAFF75D003DB50E /* CalenderCell.swift */; };
 		192056761FB99D6F00C07909 /* shouhinListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192056751FB99D6F00C07909 /* shouhinListViewController.swift */; };
@@ -108,6 +109,7 @@
 		19188F1B1F9530920033D03D /* ButtonCustom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonCustom.swift; sourceTree = "<group>"; };
 		19188F1D1F953DBE0033D03D /* shukudaiTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = shukudaiTableCell.swift; sourceTree = "<group>"; };
 		191B3F461FBAEC4100FEC364 /* tsuutiCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tsuutiCustomCell.swift; sourceTree = "<group>"; };
+		191B3F4A1FBB238B00FEC364 /* timeSetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = timeSetViewController.swift; sourceTree = "<group>"; };
 		191F5E541FAFF731003DB50E /* DateManeger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateManeger.swift; sourceTree = "<group>"; };
 		191F5E561FAFF75D003DB50E /* CalenderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalenderCell.swift; sourceTree = "<group>"; };
 		192056751FB99D6F00C07909 /* shouhinListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = shouhinListViewController.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 		1917F8771F5AFBB90070C44F /* しゅくまる */ = {
 			isa = PBXGroup;
 			children = (
+				191B3F4A1FBB238B00FEC364 /* timeSetViewController.swift */,
 				192056751FB99D6F00C07909 /* shouhinListViewController.swift */,
 				190FE5611FB6EB5500C12E32 /* しゅくまる.entitlements */,
 				1917F8781F5AFBB90070C44F /* AppDelegate.swift */,
@@ -589,6 +592,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				19188F181F95257F0033D03D /* TabThirdViewController.swift in Sources */,
+				191B3F4B1FBB238B00FEC364 /* timeSetViewController.swift in Sources */,
 				19188F161F9525680033D03D /* TabSecondViewController.swift in Sources */,
 				191B3F471FBAEC4100FEC364 /* tsuutiCustomCell.swift in Sources */,
 				1917F87D1F5AFBB90070C44F /* SecondViewController.swift in Sources */,

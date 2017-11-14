@@ -54,6 +54,8 @@ class selectViewController: UIViewController {
         
         store.removeObject(forKey: "音読判定")
         
+        store.removeObject(forKey: "音読時間")
+        
         store.removeObject(forKey: "宿題終了判定")
         
         store.synchronize()

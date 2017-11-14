@@ -9,7 +9,17 @@
 import UIKit
 import NCMB
 
-class SecondViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CustomTableViewTsuutiCellDelegate {
+
+protocol TitleTableViewControllerDelegate {
+    func updateTableView()
+}
+
+
+class SecondViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CustomTableViewTsuutiCellDelegate, TitleTableViewControllerDelegate {
+    func updateTableView() {
+        
+    }
+
     
     var tableListCount = 0
     
@@ -20,6 +30,8 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
     
     var imgArray = Array<String>()
     var label2Array = Array<String>()
+    
+    var timeSet = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +54,11 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
             ondokuLabel.text = "音読の時間を設定しましょう"
             ondokuZikanBtn.isEnabled = true // ボタン無効
             ondokuZikanBtn.backgroundColor =  UIColor(red: 48/255, green: 148/255, blue: 137/255, alpha: 1.0)
+        }
+        
+        if case _ = store.string(forKey: "音読時間") {
+            let str = store.string(forKey: "音読時間")
+            ondokuLabel.text = "音読の時間は " + str! + " です"
         }
 
         
@@ -66,6 +83,7 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
         }
         
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -98,6 +116,10 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
                 ondokuLabel.text = "音読の時間を設定しましょう"
                 ondokuZikanBtn.isEnabled = true // ボタン無効
                 ondokuZikanBtn.backgroundColor =  UIColor(red: 48/255, green: 148/255, blue: 137/255, alpha: 1.0)
+            }
+            if case _ = store.string(forKey: "音読時間") {
+                let str = store.string(forKey: "音読時間")
+                ondokuLabel.text = "音読の時間は " + str! + " です"
             }
             
             
@@ -149,7 +171,12 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
         dump(object)
         //shukudaiCount()
     }
-
+    
+    // ...途中省略
+    var titleTableViewDelegate: TitleTableViewControllerDelegate!
+    
+    // ...途中省略
+    
 
     //画面を自動回転させない
     override var shouldAutorotate: Bool {
