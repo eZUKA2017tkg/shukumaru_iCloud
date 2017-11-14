@@ -19,114 +19,68 @@ class selectViewController: UIViewController {
     }
     */
 
+    
     @IBAction func childBtnTap(_ sender: Any) {
-        //宿題数の書き換え
-        let obj5 = NCMBObject(className: "shukumaru")
         
-        obj5?.objectId = "UmVEpBZ2hXIkWXlH"
-        // 設定されたobjectIdを元にデータストアからデータを取得
-        obj5?.fetchInBackground({ (error) in
-            if error != nil {
-                // 取得に失敗した場合の処理
-            }else{
-                // 取得に成功した場合の処理
-                // (例)取得したデータの出力
-                obj5?.setObject(0, forKey: "number")
-                // データストアへの保存を実施
-                obj5?.saveInBackground({ (error) in
-                    if error != nil {
-                        // 保存に失敗した場合の処理
-                    }else{
-                        // 保存に成功した場合の処理
-                    }
-                })
-            }
-        })
+        let store  = NSUbiquitousKeyValueStore.default()
         
-        //宿題リストの書き換え
-        obj5?.objectId = "QIJ1U0hAlvvFRaLO"
-        // 設定されたobjectIdを元にデータストアからデータを取得
-        obj5?.fetchInBackground({ (error) in
-            if error != nil {
-                // 取得に失敗した場合の処理
-            }else{
-                // 取得に成功した場合の処理
-                // (例)取得したデータの出力
-                obj5?.setObject(["", "", 0, 0], forKey: "array")
-                // データストアへの保存を実施
-                obj5?.saveInBackground({ (error) in
-                    if error != nil {
-                        // 保存に失敗した場合の処理
-                    }else{
-                        // 保存に成功した場合の処理
-                    }
-                })
-            }
-        })
+        store.removeObject(forKey: "宿題数")
         
-        //宿題リストの書き換え
-        obj5?.objectId = "UQcpRuP6pOdVJCsP"
-        // 設定されたobjectIdを元にデータストアからデータを取得
-        obj5?.fetchInBackground({ (error) in
-            if error != nil {
-                // 取得に失敗した場合の処理
-            }else{
-                // 取得に成功した場合の処理
-                // (例)取得したデータの出力
-                    obj5?.setObject(["", "", 0, 0], forKey: "array")
-                // データストアへの保存を実施
-                obj5?.saveInBackground({ (error) in
-                    if error != nil {
-                        // 保存に失敗した場合の処理
-                    }else{
-                        // 保存に成功した場合の処理
-                    }
-                })
-            }
-        })
+        store.removeObject(forKey: "宿題リスト1/タイトル")
         
-        //宿題リストの書き換え
-        obj5?.objectId = "a3UE44UvNKJF8jJl"
-        // 設定されたobjectIdを元にデータストアからデータを取得
-        obj5?.fetchInBackground({ (error) in
-            if error != nil {
-                // 取得に失敗した場合の処理
-            }else{
-                // 取得に成功した場合の処理
-                // (例)取得したデータの出力
-                    obj5?.setObject(["", "", 0, 0], forKey: "array")
-                // データストアへの保存を実施
-                obj5?.saveInBackground({ (error) in
-                    if error != nil {
-                        // 保存に失敗した場合の処理
-                    }else{
-                        // 保存に成功した場合の処理
-                    }
-                })
-            }
-        })
+        store.removeObject(forKey: "宿題リスト1/状況")
         
-        //宿題リストの書き換え
-        obj5?.objectId = "g0Kkz4Ulv2kz2bzB"
-        // 設定されたobjectIdを元にデータストアからデータを取得
-        obj5?.fetchInBackground({ (error) in
-            if error != nil {
-                // 取得に失敗した場合の処理
-            }else{
-                // 取得に成功した場合の処理
-                // (例)取得したデータの出力
-                    obj5?.setObject(["", "", 0, 0], forKey: "array")
-                // データストアへの保存を実施
-                obj5?.saveInBackground({ (error) in
-                    if error != nil {
-                        // 保存に失敗した場合の処理
-                    }else{
-                        // 保存に成功した場合の処理
-                    }
-                })
-            }
-        })
         
+        store.removeObject(forKey: "宿題リスト2/タイトル")
+        
+        
+        store.removeObject(forKey: "宿題リスト2/状況")
+        
+        
+        store.removeObject(forKey: "宿題リスト3/タイトル")
+        
+        
+        store.removeObject(forKey: "宿題リスト3/状況")
+        
+        
+        store.removeObject(forKey: "宿題リスト4/タイトル")
+        
+        
+        store.removeObject(forKey: "宿題リスト4/状況")
+        
+        store.removeObject(forKey: "帰宅判定")
+        
+        store.removeObject(forKey: "宿題選択判定")
+        
+        store.removeObject(forKey: "音読判定")
+        
+        store.removeObject(forKey: "宿題終了判定")
+        
+        store.synchronize()
+        
+        
+        
+        store.set(0, forKey: "宿題数")
+        
+            store.set(["", ""], forKey: "宿題リスト1/タイトル")
+            store.set([0, 0], forKey: "宿題リスト1/状況")
+        
+            store.set(["", ""], forKey: "宿題リスト2/タイトル")
+            store.set([0, 0], forKey: "宿題リスト2/状況")
+        
+            store.set(["", ""], forKey: "宿題リスト3/タイトル")
+            store.set([0, 0], forKey: "宿題リスト3/状況")
+        
+            store.set(["", ""], forKey: "宿題リスト4/タイトル")
+            store.set([0, 0], forKey: "宿題リスト4/状況")
+        
+        store.set(1, forKey: "帰宅判定")
+        store.set(0, forKey: "宿題選択判定")
+        store.set(0, forKey: "音読判定")
+        store.set(0, forKey: "宿題終了判定")
+        
+        store.synchronize()
 
     }
+    
 }

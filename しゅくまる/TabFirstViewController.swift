@@ -53,13 +53,35 @@ class TabFirstViewController: UIViewController, UITableViewDelegate {
             hantei -= 1
         }else if buttonHantei[0] == 0{
             kanjiDoriru.setBackgroundImage(kanjiOFF, for: .normal)
+
+            let alert: UIAlertController = UIAlertController(title: "これいじょうはえらべないよ!", message: "", preferredStyle:  UIAlertControllerStyle.alert)
+            
+            // ② Actionの設定
+            // Action初期化時にタイトル, スタイル, 押された時に実行されるハンドラを指定する
+            // 第3引数のUIAlertActionStyleでボタンのスタイルを指定する
+            // OKボタン
+            let defaultAction: UIAlertAction = UIAlertAction(title: "もどる", style: UIAlertActionStyle.default, handler:{
+                // ボタンが押された時の処理を書く（クロージャ実装）
+                (action: UIAlertAction!) -> Void in
+                print("OK")
+                
+            })
+            
+            // ③ UIAlertControllerにActionを追加
+            alert.addAction(defaultAction)
+            
+            // ④ Alertを表示
+            present(alert, animated: true, completion: nil)
         }
+        
     }
     
     let keisanON = UIImage(named: "けいさんドリルon")
     let keisanOFF = UIImage(named: "けいさんドリル")
-
-    @IBAction func keisanTap(_ sender: Any) {
+    
+    
+    @IBAction func keisandoriruTap(_ sender: Any) {
+        
         if buttonHantei[1] == 0 && hantei < 4{
             keisanDoriru.setBackgroundImage(keisanON, for: .normal)
             buttonHantei[1] = 1
@@ -71,6 +93,25 @@ class TabFirstViewController: UIViewController, UITableViewDelegate {
         }
         else if buttonHantei[1] == 0{
             keisanDoriru.setBackgroundImage(keisanOFF, for: .normal)
+            
+            let alert: UIAlertController = UIAlertController(title: "これいじょうはえらべないよ!", message: "", preferredStyle:  UIAlertControllerStyle.alert)
+            
+            // ② Actionの設定
+            // Action初期化時にタイトル, スタイル, 押された時に実行されるハンドラを指定する
+            // 第3引数のUIAlertActionStyleでボタンのスタイルを指定する
+            // OKボタン
+            let defaultAction: UIAlertAction = UIAlertAction(title: "もどる", style: UIAlertActionStyle.default, handler:{
+                // ボタンが押された時の処理を書く（クロージャ実装）
+                (action: UIAlertAction!) -> Void in
+                print("OK")
+                
+            })
+            
+            // ③ UIAlertControllerにActionを追加
+            alert.addAction(defaultAction)
+            
+            // ④ Alertを表示
+            present(alert, animated: true, completion: nil)
         }
     }
     
@@ -89,6 +130,25 @@ class TabFirstViewController: UIViewController, UITableViewDelegate {
         }
         else if buttonHantei[2] == 0{
             sakubun.setBackgroundImage(sakubunOFF, for: .normal)
+            
+            let alert: UIAlertController = UIAlertController(title: "これいじょうはえらべないよ!", message: "", preferredStyle:  UIAlertControllerStyle.alert)
+            
+            // ② Actionの設定
+            // Action初期化時にタイトル, スタイル, 押された時に実行されるハンドラを指定する
+            // 第3引数のUIAlertActionStyleでボタンのスタイルを指定する
+            // OKボタン
+            let defaultAction: UIAlertAction = UIAlertAction(title: "もどる", style: UIAlertActionStyle.default, handler:{
+                // ボタンが押された時の処理を書く（クロージャ実装）
+                (action: UIAlertAction!) -> Void in
+                print("OK")
+                
+            })
+            
+            // ③ UIAlertControllerにActionを追加
+            alert.addAction(defaultAction)
+            
+            // ④ Alertを表示
+            present(alert, animated: true, completion: nil)
         }
     }
     
@@ -106,6 +166,25 @@ class TabFirstViewController: UIViewController, UITableViewDelegate {
             hantei -= 1
         }else if buttonHantei[3] == 0{
             ondoku.setBackgroundImage(ondokuOFF, for: .normal)
+            
+            let alert: UIAlertController = UIAlertController(title: "これいじょうはえらべないよ!", message: "", preferredStyle:  UIAlertControllerStyle.alert)
+            
+            // ② Actionの設定
+            // Action初期化時にタイトル, スタイル, 押された時に実行されるハンドラを指定する
+            // 第3引数のUIAlertActionStyleでボタンのスタイルを指定する
+            // OKボタン
+            let defaultAction: UIAlertAction = UIAlertAction(title: "もどる", style: UIAlertActionStyle.default, handler:{
+                // ボタンが押された時の処理を書く（クロージャ実装）
+                (action: UIAlertAction!) -> Void in
+                print("OK")
+                
+            })
+            
+            // ③ UIAlertControllerにActionを追加
+            alert.addAction(defaultAction)
+            
+            // ④ Alertを表示
+            present(alert, animated: true, completion: nil)
         }
     }
     
@@ -124,6 +203,25 @@ class TabFirstViewController: UIViewController, UITableViewDelegate {
             hantei -= 1
         }else if buttonHantei[4] == 0{
             kokugo.setBackgroundImage(kokugoOFF, for: .normal)
+            
+            let alert: UIAlertController = UIAlertController(title: "これいじょうはえらべないよ!", message: "", preferredStyle:  UIAlertControllerStyle.alert)
+            
+            // ② Actionの設定
+            // Action初期化時にタイトル, スタイル, 押された時に実行されるハンドラを指定する
+            // 第3引数のUIAlertActionStyleでボタンのスタイルを指定する
+            // OKボタン
+            let defaultAction: UIAlertAction = UIAlertAction(title: "もどる", style: UIAlertActionStyle.default, handler:{
+                // ボタンが押された時の処理を書く（クロージャ実装）
+                (action: UIAlertAction!) -> Void in
+                print("OK")
+                
+            })
+            
+            // ③ UIAlertControllerにActionを追加
+            alert.addAction(defaultAction)
+            
+            // ④ Alertを表示
+            present(alert, animated: true, completion: nil)
         }
     }
     
@@ -142,6 +240,25 @@ class TabFirstViewController: UIViewController, UITableViewDelegate {
         }
         else if buttonHantei[5] == 0{
             sansuu.setBackgroundImage(sansuuOFF, for: .normal)
+            
+            let alert: UIAlertController = UIAlertController(title: "これいじょうはえらべないよ!", message: "", preferredStyle:  UIAlertControllerStyle.alert)
+            
+            // ② Actionの設定
+            // Action初期化時にタイトル, スタイル, 押された時に実行されるハンドラを指定する
+            // 第3引数のUIAlertActionStyleでボタンのスタイルを指定する
+            // OKボタン
+            let defaultAction: UIAlertAction = UIAlertAction(title: "もどる", style: UIAlertActionStyle.default, handler:{
+                // ボタンが押された時の処理を書く（クロージャ実装）
+                (action: UIAlertAction!) -> Void in
+                print("OK")
+                
+            })
+            
+            // ③ UIAlertControllerにActionを追加
+            alert.addAction(defaultAction)
+            
+            // ④ Alertを表示
+            present(alert, animated: true, completion: nil)
         }
     }
     
@@ -158,6 +275,25 @@ class TabFirstViewController: UIViewController, UITableViewDelegate {
             hantei -= 1
         }else if buttonHantei[6] == 0{
             shakai.setBackgroundImage(shakaiOFF, for: .normal)
+            
+            let alert: UIAlertController = UIAlertController(title: "これいじょうはえらべないよ!", message: "", preferredStyle:  UIAlertControllerStyle.alert)
+            
+            // ② Actionの設定
+            // Action初期化時にタイトル, スタイル, 押された時に実行されるハンドラを指定する
+            // 第3引数のUIAlertActionStyleでボタンのスタイルを指定する
+            // OKボタン
+            let defaultAction: UIAlertAction = UIAlertAction(title: "もどる", style: UIAlertActionStyle.default, handler:{
+                // ボタンが押された時の処理を書く（クロージャ実装）
+                (action: UIAlertAction!) -> Void in
+                print("OK")
+                
+            })
+            
+            // ③ UIAlertControllerにActionを追加
+            alert.addAction(defaultAction)
+            
+            // ④ Alertを表示
+            present(alert, animated: true, completion: nil)
         }
     }
 
@@ -176,6 +312,25 @@ class TabFirstViewController: UIViewController, UITableViewDelegate {
             hantei -= 1
         }else if buttonHantei[7] == 0{
             rika.setBackgroundImage(rikaOFF, for: .normal)
+            
+            let alert: UIAlertController = UIAlertController(title: "これいじょうはえらべないよ!", message: "", preferredStyle:  UIAlertControllerStyle.alert)
+            
+            // ② Actionの設定
+            // Action初期化時にタイトル, スタイル, 押された時に実行されるハンドラを指定する
+            // 第3引数のUIAlertActionStyleでボタンのスタイルを指定する
+            // OKボタン
+            let defaultAction: UIAlertAction = UIAlertAction(title: "もどる", style: UIAlertActionStyle.default, handler:{
+                // ボタンが押された時の処理を書く（クロージャ実装）
+                (action: UIAlertAction!) -> Void in
+                print("OK")
+                
+            })
+            
+            // ③ UIAlertControllerにActionを追加
+            alert.addAction(defaultAction)
+            
+            // ④ Alertを表示
+            present(alert, animated: true, completion: nil)
         }
     }
     
@@ -193,6 +348,25 @@ class TabFirstViewController: UIViewController, UITableViewDelegate {
             hantei -= 1
         }else if buttonHantei[8] == 0{
             gaikokugo.setBackgroundImage(gaikokugoOFF, for: .normal)
+            
+            let alert: UIAlertController = UIAlertController(title: "これいじょうはえらべないよ!", message: "", preferredStyle:  UIAlertControllerStyle.alert)
+            
+            // ② Actionの設定
+            // Action初期化時にタイトル, スタイル, 押された時に実行されるハンドラを指定する
+            // 第3引数のUIAlertActionStyleでボタンのスタイルを指定する
+            // OKボタン
+            let defaultAction: UIAlertAction = UIAlertAction(title: "もどる", style: UIAlertActionStyle.default, handler:{
+                // ボタンが押された時の処理を書く（クロージャ実装）
+                (action: UIAlertAction!) -> Void in
+                print("OK")
+                
+            })
+            
+            // ③ UIAlertControllerにActionを追加
+            alert.addAction(defaultAction)
+            
+            // ④ Alertを表示
+            present(alert, animated: true, completion: nil)
         }
     }
     
@@ -294,6 +468,11 @@ class TabFirstViewController: UIViewController, UITableViewDelegate {
         if (segue.identifier == "mySegue") {
             ataiwatashi()
             
+            let store  = NSUbiquitousKeyValueStore.default()
+            
+            store.removeObject(forKey: "音読判定")
+            store.set(0, forKey: "音読判定")
+            store.synchronize()
             
             var imgArray = [String](repeating: "", count: label2Array.count)
             
@@ -312,6 +491,9 @@ class TabFirstViewController: UIViewController, UITableViewDelegate {
                     break
                 case "おんどく":
                     imgArray[n] = "おんどくai"
+                    store.removeObject(forKey: "音読判定")
+                    store.set(1, forKey: "音読判定")
+                    store.synchronize()
                     break
                 case "こくご":
                     imgArray[n] = "こくごai"
@@ -338,9 +520,7 @@ class TabFirstViewController: UIViewController, UITableViewDelegate {
             
             shukudaiCount = label2Array.count
             
-            
-            
-            let store  = NSUbiquitousKeyValueStore.default()
+
             
             store.removeObject(forKey: "宿題数")
             
@@ -366,6 +546,8 @@ class TabFirstViewController: UIViewController, UITableViewDelegate {
             
             store.removeObject(forKey: "宿題リスト4/状況")
             
+            store.removeObject(forKey: "宿題選択判定")
+            
             store.synchronize()
             
             store.set(shukudaiCount, forKey: "宿題数")
@@ -389,6 +571,8 @@ class TabFirstViewController: UIViewController, UITableViewDelegate {
                 store.set([imgArray[3], label2Array[3]], forKey: "宿題リスト4/タイトル")
                 store.set([0, 0], forKey: "宿題リスト4/状況")
             }
+            
+            store.set(1, forKey: "宿題選択判定")
             
             store.synchronize()
 

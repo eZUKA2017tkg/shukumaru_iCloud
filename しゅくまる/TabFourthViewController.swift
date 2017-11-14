@@ -191,7 +191,7 @@ class TabFourthViewController: UIViewController, UICollectionViewDataSource, UIC
             if finishCount > 0 {
                 let kakuninformatter: DateFormatter = DateFormatter()
                 kakuninformatter.dateFormat = "M"
-                if kakuninformatter.string(from: now as Date) == kakuninformatter.string(from: selectedDate as Date) {
+                if kakuninformatter.string(from: now as Date) == kakuninformatter.string(from: selectedDate as Date + 1) {
                 if cell.textLabel.text == todayDateFormatter.string(from: now) {
                 print("成功")
                     Btn?.setBackgroundImage(UIImage(named: "はなまるカレンダー"), for: .normal)
