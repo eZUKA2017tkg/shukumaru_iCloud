@@ -8,6 +8,7 @@
 
 import UIKit
 
+@available(iOS 10.0, *)
 class timeSetViewController: UIViewController, UINavigationControllerDelegate {
 
     @IBOutlet weak var ondokuTimeSet: UIDatePicker!
@@ -39,10 +40,59 @@ class timeSetViewController: UIViewController, UINavigationControllerDelegate {
         ondokuTimeSet.date = now
         
         // BViewController自身をDelegate委託相手とする。
-        navigationController?.delegate = self as! UINavigationControllerDelegate
+        navigationController?.delegate = self as UINavigationControllerDelegate
+        
+        // 時間管理してくれる
+        _ = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timeSetViewController.update), userInfo: nil, repeats: true)
         
     }
     
+    
+    func getNowTime()-> String {
+        // 現在時刻を取得
+        let nowTime: Date = Date()
+        // 成形する
+        let format = DateFormatter()
+        format.dateFormat = "H:mm"
+        let nowTimeStr = format.string(from: nowTime)
+        // 成形した時刻を文字列として返す
+        return nowTimeStr
+    }
+    
+    func update() {
+        // 現在時刻を取得
+        let str = getNowTime()
+        // アラーム鳴らすか判断
+        myAlarm(str: str)
+    }
+    
+    func myAlarm(str: String) {
+        // 現在時刻が設定時刻と一緒なら
+        let store  = NSUbiquitousKeyValueStore.default()
+        if store.string(forKey: "音読時間") != "" {
+            if str == store.string(forKey: "音読時間"){
+                if Int(store.longLong(forKey: "親アラート判定")) == 1 {
+                    alert()
+                }
+            }
+        }
+    }
+    
+    // アラートの表示
+    func alert() {
+        let store  = NSUbiquitousKeyValueStore.default()
+        let myAlert = UIAlertController(title: "音読の時間です", message: store.string(forKey: "音読時間"), preferredStyle: .alert)
+        let myAction = UIAlertAction(title: "閉じる", style: .default) {
+            action in print("foo!!")
+        }
+        myAlert.addAction(myAction)
+        present(myAlert, animated: true, completion: nil)
+        
+        store.removeObject(forKey: "親アラート判定")
+        store.set(0, forKey: "親アラート判定")
+        store.synchronize()
+    }
+
 
     
     func updateStr() {
@@ -58,10 +108,17 @@ class timeSetViewController: UIViewController, UINavigationControllerDelegate {
         
         let store  = NSUbiquitousKeyValueStore.default()
         store.removeObject(forKey: "音読時間")
+        store.removeObject(forKey: "親アラート判定")
+        store.set(1, forKey: "親アラート判定")
+        store.removeObject(forKey: "子アラート判定")
+        store.set(1, forKey: "子アラート判定")
+        store.removeObject(forKey: "音読ボタン変更判定")
+        store.set(0, forKey: "音読ボタン変更判定")
         store.set(dateFomatter.string(from: ondokuTimeSet.date), forKey: "音読時間")
         store.synchronize()
         
         returnDate = dateFomatter.string(from: ondokuTimeSet.date)
+        
         
         let alert: UIAlertController = UIAlertController(title: "設定しました", message: "", preferredStyle:  UIAlertControllerStyle.alert)
         

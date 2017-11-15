@@ -474,6 +474,20 @@ class TabFirstViewController: UIViewController, UITableViewDelegate {
             store.set(0, forKey: "音読判定")
             store.synchronize()
             
+            store.removeObject(forKey: "音読時間")
+            store.set("", forKey: "音読時間")
+            store.synchronize()
+            
+            store.removeObject(forKey: "宿題終了判定")
+            store.set(0, forKey: "宿題終了判定")
+            store.synchronize()
+            
+            store.removeObject(forKey: "音読判定プッシュ")
+            store.removeObject(forKey: "はなまる判定プッシュ")
+            store.set(0, forKey: "音読判定プッシュ")
+            store.set(0, forKey: "はなまる判定プッシュ")
+            store.synchronize()
+            
             var imgArray = [String](repeating: "", count: label2Array.count)
             
             for n in 0..<label2Array.count {
@@ -493,6 +507,9 @@ class TabFirstViewController: UIViewController, UITableViewDelegate {
                     imgArray[n] = "おんどくai"
                     store.removeObject(forKey: "音読判定")
                     store.set(1, forKey: "音読判定")
+                    store.synchronize()
+                    store.removeObject(forKey: "音読判定プッシュ")
+                    store.set(1, forKey: "音読判定プッシュ")
                     store.synchronize()
                     break
                 case "こくご":
@@ -547,6 +564,9 @@ class TabFirstViewController: UIViewController, UITableViewDelegate {
             store.removeObject(forKey: "宿題リスト4/状況")
             
             store.removeObject(forKey: "宿題選択判定")
+            store.removeObject(forKey: "親アラート判定")
+            store.removeObject(forKey: "子アラート判定")
+            store.removeObject(forKey: "音読ボタン変更判定")
             
             store.synchronize()
             
@@ -573,8 +593,12 @@ class TabFirstViewController: UIViewController, UITableViewDelegate {
             }
             
             store.set(1, forKey: "宿題選択判定")
+            store.set(0, forKey: "親アラート判定")
+            store.set(0, forKey: "子アラート判定")
+            store.set(0, forKey: "音読ボタン変更判定")
             
             store.synchronize()
+            
 
             
             let secondViewController:tableViewList = segue.destination as! tableViewList

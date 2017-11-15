@@ -37,8 +37,25 @@ class phoneTabBarController: UITabBarController {
         for (idx, item) in self.tabBar.items!.enumerated() {
             item.image = UIImage(named: assets[idx])?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
         }
+        
+        
+        //通知センターの設定
+        let center = NotificationCenter.default
+        center.addObserver(self,selector: #selector(ubiquitousDataDidChange), name: NSUbiquitousKeyValueStore.didChangeExternallyNotification,object: nil)
     }
     
+    func ubiquitousDataDidChange(notification: NSNotification) {
+        //iCloudのデータが変更された時の処理
+        //通知オブジェクトから渡ってくるデータを取得
+        print("成功")
+        let store  = NSUbiquitousKeyValueStore.default()
+        if let info = notification.userInfo {
+            if Int(store.longLong(forKey: "アイコンバッジ")) > 0 {
+                
+            }
+        }
+        
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

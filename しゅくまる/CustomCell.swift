@@ -54,10 +54,36 @@ class CustomCell: UITableViewCell {
             
             titleLabel.text = String(describing: cellObject.title)
             
+            let store  = NSUbiquitousKeyValueStore.default()
+            
             if cellObject.tapBtn == 0 {
-                tapBtn?.setTitle("これから!", for: .normal)
-                tapBtn?.setTitleColor(UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
-                tapBtn?.backgroundColor = UIColor(red: 48/255, green: 148/255, blue: 137/255, alpha: 1.0)
+
+                if titleLabel.text == "おんどく" {
+                    print("成功")
+                    if store.string(forKey: "音読時間") == "" {
+                        print("aaaa")
+                        tapBtn!.setTitle("-- : --", for: .normal)
+                        tapBtn!.backgroundColor = UIColor(red: 48/255, green: 148/255, blue: 137/255, alpha: 1.0)
+                        tapBtn!.setTitleColor(UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
+                    }else {
+                        tapBtn.setTitle(store.string(forKey: "音読時間"), for: .normal)
+                        tapBtn.backgroundColor = UIColor(red: 48/255, green: 148/255, blue: 137/255, alpha: 1.0)
+                        tapBtn.setTitleColor(UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
+                    }
+                    
+                    if Int(store.longLong(forKey: "音読ボタン変更判定")) == 1 {
+                        tapBtn?.setTitle("これから!", for: .normal)
+                        tapBtn?.setTitleColor(UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
+                        tapBtn?.backgroundColor = UIColor(red: 48/255, green: 148/255, blue: 137/255, alpha: 1.0)
+                    }
+                    
+                }else if titleLabel.text != "おんどく" {
+                    tapBtn?.setTitle("これから!", for: .normal)
+                    tapBtn?.setTitleColor(UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
+                    tapBtn?.backgroundColor = UIColor(red: 48/255, green: 148/255, blue: 137/255, alpha: 1.0)
+                }
+
+                
             }else if cellObject.tapBtn == 1 {
                 tapBtn?.setTitle("おわった!", for: .normal)
                 tapBtn?.setTitleColor(UIColor(red: 48/255, green: 148/255, blue: 137/255, alpha: 1.0), for: .normal)
@@ -78,7 +104,7 @@ class CustomCell: UITableViewCell {
         if cellObject.tapBtn == 0 {
             
         let store  = NSUbiquitousKeyValueStore.default()
-        
+            if titleLabel.text != "おんどく" || Int(store.longLong(forKey: "音読ボタン変更判定")) == 1{
         tapBtn?.setTitle("おわった!", for: .normal)
         tapBtn?.setTitleColor(UIColor(red: 48/255, green: 148/255, blue: 137/255, alpha: 1.0), for: .normal)
         tapBtn?.backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
@@ -117,12 +143,15 @@ class CustomCell: UITableViewCell {
             store.removeObject(forKey: "宿題終了判定")
             store.set(count, forKey: "宿題終了判定")
             store.synchronize()
+                store.removeObject(forKey: "はなまる判定プッシュ")
+                store.set(1, forKey: "はなまる判定プッシュ")
+                store.synchronize()
         
         cellObject.tapBtn = 1
         // DelegateでViewControllerに処理を渡す
         delegate?.updateCellObject(object: cellObject)
         }
-
+        }
     }
     
 }

@@ -7,15 +7,238 @@
 //
 
 import UIKit
+import UserNotifications
 
+@available(iOS 10.0, *)
 class FourthViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //通知センターの設定
+        let center = NotificationCenter.default
+        center.addObserver(self,selector: #selector(ubiquitousDataDidChange), name: NSUbiquitousKeyValueStore.didChangeExternallyNotification,object: nil)
+
 
         // Do any additional setup after loading the view.
+        // 時間管理してくれる
+        _ = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(FourthViewController.update), userInfo: nil, repeats: true)
+    }
+    
+    func ubiquitousDataDidChange(notification: NSNotification) {
+        //iCloudのデータが変更された時の処理
+        //通知オブジェクトから渡ってくるデータを取得
+        print("成功")
+        let store  = NSUbiquitousKeyValueStore.default()
+        if let info = notification.userInfo {
+            
+            if Int(store.longLong(forKey: "帰宅判定プッシュ")) == 1 {
+                if #available(iOS 10.0, *) {
+                    // iOS 10
+                    let center = UNUserNotificationCenter.current()
+                    center.requestAuthorization(options: [.badge, .sound, .alert], completionHandler: { (granted, error) in
+                        if error != nil {
+                            return
+                        }
+                        
+                        if granted {
+                            print("通知許可")
+                            
+                            let center = UNUserNotificationCenter.current()
+                            center.delegate = self as? UNUserNotificationCenterDelegate
+                            
+                        } else {
+                            print("通知拒否")
+                        }
+                    })
+                    
+                } else {
+                    // iOS 9以下
+                    let settings = UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: nil)
+                    UIApplication.shared.registerUserNotificationSettings(settings)
+                }
+                
+                
+                //　通知設定に必要なクラスをインスタンス化
+                let trigger: UNNotificationTrigger
+                let content = UNMutableNotificationContent()
+                var notificationTime = DateComponents()
+                
+                // トリガー設定
+                // 設定したタイミングを起点として1分後に通知したい場合
+                trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+                
+                // 通知内容の設定
+                content.title = ""
+                content.body = "○○ちゃんが帰宅しました"
+                content.sound = UNNotificationSound.default()
+                
+                // 通知スタイルを指定
+                let request = UNNotificationRequest(identifier: "uuid", content: content, trigger: trigger)
+                // 通知をセット
+                UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+                
+                let store  = NSUbiquitousKeyValueStore.default()
+                store.removeObject(forKey: "帰宅判定プッシュ")
+                store.set(0, forKey: "帰宅判定プッシュ")
+                store.synchronize()
+            }
+            
+            if Int(store.longLong(forKey: "音読判定プッシュ")) == 1 {
+                if #available(iOS 10.0, *) {
+                    // iOS 10
+                    let center = UNUserNotificationCenter.current()
+                    center.requestAuthorization(options: [.badge, .sound, .alert], completionHandler: { (granted, error) in
+                        if error != nil {
+                            return
+                        }
+                        
+                        if granted {
+                            print("通知許可")
+                            
+                            let center = UNUserNotificationCenter.current()
+                            center.delegate = self as? UNUserNotificationCenterDelegate
+                            
+                        } else {
+                            print("通知拒否")
+                        }
+                    })
+                    
+                } else {
+                    // iOS 9以下
+                    let settings = UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: nil)
+                    UIApplication.shared.registerUserNotificationSettings(settings)
+                }
+                
+                
+                //　通知設定に必要なクラスをインスタンス化
+                let trigger: UNNotificationTrigger
+                let content = UNMutableNotificationContent()
+                var notificationTime = DateComponents()
+                
+                // トリガー設定
+                // 設定したタイミングを起点として1分後に通知したい場合
+                trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+                
+                // 通知内容の設定
+                content.title = ""
+                content.body = "音読を聞いてあげる時間を設定しましょう"
+                content.sound = UNNotificationSound.default()
+                
+                // 通知スタイルを指定
+                let request = UNNotificationRequest(identifier: "uuid", content: content, trigger: trigger)
+                // 通知をセット
+                UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+                
+                let store  = NSUbiquitousKeyValueStore.default()
+                store.removeObject(forKey: "音読判定プッシュ")
+                store.set(0, forKey: "音読判定プッシュ")
+                store.synchronize()
+            }
+            
+            if Int(store.longLong(forKey: "はなまる判定プッシュ")) == 1 {
+                if #available(iOS 10.0, *) {
+                    // iOS 10
+                    let center = UNUserNotificationCenter.current()
+                    center.requestAuthorization(options: [.badge, .sound, .alert], completionHandler: { (granted, error) in
+                        if error != nil {
+                            return
+                        }
+                        
+                        if granted {
+                            print("通知許可")
+                            
+                            let center = UNUserNotificationCenter.current()
+                            center.delegate = self as? UNUserNotificationCenterDelegate
+                            
+                        } else {
+                            print("通知拒否")
+                        }
+                    })
+                    
+                } else {
+                    // iOS 9以下
+                    let settings = UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: nil)
+                    UIApplication.shared.registerUserNotificationSettings(settings)
+                }
+                
+                
+                //　通知設定に必要なクラスをインスタンス化
+                let trigger: UNNotificationTrigger
+                let content = UNMutableNotificationContent()
+                var notificationTime = DateComponents()
+                
+                // トリガー設定
+                // 設定したタイミングを起点として1分後に通知したい場合
+                trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+                
+                // 通知内容の設定
+                content.title = ""
+                content.body = "終わった宿題にはなまるを付けてあげましょう"
+                content.sound = UNNotificationSound.default()
+                
+                // 通知スタイルを指定
+                let request = UNNotificationRequest(identifier: "uuid", content: content, trigger: trigger)
+                // 通知をセット
+                UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+                
+                let store  = NSUbiquitousKeyValueStore.default()
+                store.removeObject(forKey: "はなまる判定プッシュ")
+                store.set(0, forKey: "はなまる判定プッシュ")
+                store.synchronize()
+            }
+
+            
+        }
+        
     }
 
+
+    func getNowTime()-> String {
+        // 現在時刻を取得
+        let nowTime: Date = Date()
+        // 成形する
+        let format = DateFormatter()
+        format.dateFormat = "H:mm"
+        let nowTimeStr = format.string(from: nowTime)
+        // 成形した時刻を文字列として返す
+        return nowTimeStr
+    }
+    
+    func update() {
+        // 現在時刻を取得
+        let str = getNowTime()
+        // アラーム鳴らすか判断
+        myAlarm(str: str)
+    }
+    
+    func myAlarm(str: String) {
+        // 現在時刻が設定時刻と一緒なら
+        let store  = NSUbiquitousKeyValueStore.default()
+        if store.string(forKey: "音読時間") != "" {
+            if str == store.string(forKey: "音読時間"){
+                if Int(store.longLong(forKey: "親アラート判定")) == 1 {
+                    alert()
+                }
+            }
+        }
+    }
+    
+    // アラートの表示
+    func alert() {
+        let store  = NSUbiquitousKeyValueStore.default()
+        let myAlert = UIAlertController(title: "音読の時間です", message: store.string(forKey: "音読時間"), preferredStyle: .alert)
+        let myAction = UIAlertAction(title: "閉じる", style: .default) {
+            action in print("foo!!")
+        }
+        myAlert.addAction(myAction)
+        present(myAlert, animated: true, completion: nil)
+        
+        store.removeObject(forKey: "親アラート判定")
+        store.set(0, forKey: "親アラート判定")
+        store.synchronize()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -48,11 +48,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let label1 = cell.viewWithTag(2) as! UILabel
         label1.text = String(describing: label2Array[indexPath.row])
         
-        //Tag番号3でUIButtonインスタンスの生成
-        let button1 = cell.viewWithTag(3) as! UIButton
-        
-        //Tag番号4でUIImageViewインスタンスの生成
-        let imageView2 = cell.viewWithTag(4) as! UIImageView
         
         return cell
         
