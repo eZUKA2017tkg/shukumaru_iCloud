@@ -30,13 +30,23 @@ class ThirdViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     //sectionごとの画像配列
     let imgArray:Array = [
-        "再生ボタン", "再生ボタン", "再生ボタン"
+        "再生ボタン", "再生ボタン", "再生ボタン", "再生ボタン", "再生ボタン"
     ]
     
     let label2Array:Array = [
-        "けいさんドリル",
-        "おんどく",
-        "しゃかい"
+        "10秒",
+        "30秒",
+        "20秒",
+        "40秒",
+        "1分5秒"
+    ]
+    
+    let label3Array:Array = [
+        "今日  -- : --",
+        "昨日  -- : --",
+        "○/◇ -- : --",
+        "○/◇ -- : --",
+        "○/◇ -- : --"
     ]
     
     //TableViewセルの数を指定
@@ -51,9 +61,9 @@ class ThirdViewController: UIViewController, UITableViewDataSource, UITableViewD
         //tableCellのIDでUITableViewCellのインスタンスを生成
         let cell = table.dequeueReusableCell(withIdentifier: "renrakuCustomCell", for: indexPath) as! renrakuTableViewCell
         
-        cell.cellObject = setRenrakuCell(icon: "再生ボタン", title: "")
+        cell.cellObject = setRenrakuCell(icon: "再生ボタン", title: label2Array[indexPath.row], date: label3Array[indexPath.row])
         
-        cell.delegate = self as! CustomTableViewRenrakuCellDelegate
+        cell.delegate = self as CustomTableViewRenrakuCellDelegate
         
         return cell
     }
@@ -121,111 +131,6 @@ class ThirdViewController: UIViewController, UITableViewDataSource, UITableViewD
                 store.set(0, forKey: "帰宅判定プッシュ")
                 store.synchronize()
             }
-            
-            if Int(store.longLong(forKey: "音読判定プッシュ")) == 1 {
-                if #available(iOS 10.0, *) {
-                    // iOS 10
-                    let center = UNUserNotificationCenter.current()
-                    center.requestAuthorization(options: [.badge, .sound, .alert], completionHandler: { (granted, error) in
-                        if error != nil {
-                            return
-                        }
-                        
-                        if granted {
-                            print("通知許可")
-                            
-                            let center = UNUserNotificationCenter.current()
-                            center.delegate = self as? UNUserNotificationCenterDelegate
-                            
-                        } else {
-                            print("通知拒否")
-                        }
-                    })
-                    
-                } else {
-                    // iOS 9以下
-                    let settings = UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: nil)
-                    UIApplication.shared.registerUserNotificationSettings(settings)
-                }
-                
-                
-                //　通知設定に必要なクラスをインスタンス化
-                let trigger: UNNotificationTrigger
-                let content = UNMutableNotificationContent()
-                var notificationTime = DateComponents()
-                
-                // トリガー設定
-                // 設定したタイミングを起点として1分後に通知したい場合
-                trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-                
-                // 通知内容の設定
-                content.title = ""
-                content.body = "音読を聞いてあげる時間を設定しましょう"
-                content.sound = UNNotificationSound.default()
-                
-                // 通知スタイルを指定
-                let request = UNNotificationRequest(identifier: "uuid", content: content, trigger: trigger)
-                // 通知をセット
-                UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-                
-                let store  = NSUbiquitousKeyValueStore.default()
-                store.removeObject(forKey: "音読判定プッシュ")
-                store.set(0, forKey: "音読判定プッシュ")
-                store.synchronize()
-            }
-            
-            if Int(store.longLong(forKey: "はなまる判定プッシュ")) == 1 {
-                if #available(iOS 10.0, *) {
-                    // iOS 10
-                    let center = UNUserNotificationCenter.current()
-                    center.requestAuthorization(options: [.badge, .sound, .alert], completionHandler: { (granted, error) in
-                        if error != nil {
-                            return
-                        }
-                        
-                        if granted {
-                            print("通知許可")
-                            
-                            let center = UNUserNotificationCenter.current()
-                            center.delegate = self as? UNUserNotificationCenterDelegate
-                            
-                        } else {
-                            print("通知拒否")
-                        }
-                    })
-                    
-                } else {
-                    // iOS 9以下
-                    let settings = UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: nil)
-                    UIApplication.shared.registerUserNotificationSettings(settings)
-                }
-                
-                
-                //　通知設定に必要なクラスをインスタンス化
-                let trigger: UNNotificationTrigger
-                let content = UNMutableNotificationContent()
-                var notificationTime = DateComponents()
-                
-                // トリガー設定
-                // 設定したタイミングを起点として1分後に通知したい場合
-                trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-                
-                // 通知内容の設定
-                content.title = ""
-                content.body = "終わった宿題にはなまるを付けてあげましょう"
-                content.sound = UNNotificationSound.default()
-                
-                // 通知スタイルを指定
-                let request = UNNotificationRequest(identifier: "uuid", content: content, trigger: trigger)
-                // 通知をセット
-                UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-                
-                let store  = NSUbiquitousKeyValueStore.default()
-                store.removeObject(forKey: "はなまる判定プッシュ")
-                store.set(0, forKey: "はなまる判定プッシュ")
-                store.synchronize()
-            }
-
         }
         
     }

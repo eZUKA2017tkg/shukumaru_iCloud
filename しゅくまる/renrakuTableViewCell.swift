@@ -11,11 +11,13 @@ import UIKit
 class setRenrakuCell {
     var iconView: String
     var title: String
+    var date: String
     
-    init(icon: String, title: String) {
+    init(icon: String, title: String, date: String) {
         
         self.iconView = icon
         self.title = title
+        self.date = date
     }
     
     
@@ -34,6 +36,7 @@ class renrakuTableViewCell: UITableViewCell {
     
     @IBOutlet weak var iconView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     
     var indexPath = IndexPath()
     
@@ -45,10 +48,11 @@ class renrakuTableViewCell: UITableViewCell {
     var cellObject: setRenrakuCell! {
         didSet {
             
-            iconView?.image = UIImage(named: "")
+            iconView?.image = UIImage(named: cellObject.iconView)
             
-            titleLabel?.text = ""
+            titleLabel?.text = String(describing: cellObject.title)
             
+            dateLabel?.text = String(describing: cellObject.date)
         }
         
     }

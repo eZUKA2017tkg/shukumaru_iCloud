@@ -91,7 +91,7 @@ class MediaConnectionViewController: UIViewController, UINavigationControllerDel
         // Initialize views
         //
         if self.navigationItem.title == nil {
-            let strTitle = "おかあさん"
+            let strTitle = "〇〇ちゃん"
             self.navigationItem.title = strTitle
         }
         
@@ -116,7 +116,7 @@ class MediaConnectionViewController: UIViewController, UINavigationControllerDel
         } else {
             // iPhone / iPod touch
             rcRemote.size.width = rcScreen.size.width
-            rcRemote.size.height = rcRemote.size.width - 75
+            rcRemote.size.height = rcRemote.size.width - 80
         }
         rcRemote.origin.x = (rcScreen.size.width - rcRemote.size.width) / 2.0
         rcRemote.origin.y = 120

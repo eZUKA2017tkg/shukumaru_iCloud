@@ -40,9 +40,10 @@ class selectViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
 
+    @IBAction func oyaTap(_ sender: Any) {
+    }
 
-
-    @IBAction func childBtnTap(_ sender: Any) {
+    @IBAction func kodomoTap(_ sender: Any) {
         
         let store  = NSUbiquitousKeyValueStore.default()
         
@@ -78,8 +79,8 @@ class selectViewController: UIViewController {
         
         store.removeObject(forKey: "音読判定")
         
-                store.removeObject(forKey: "音読判定プッシュ")
-                store.removeObject(forKey: "はなまる判定プッシュ")
+        store.removeObject(forKey: "音読判定プッシュ")
+        store.removeObject(forKey: "はなまる判定プッシュ")
         
         store.removeObject(forKey: "音読時間")
         
@@ -90,7 +91,7 @@ class selectViewController: UIViewController {
         
         store.removeObject(forKey: "音読ボタン変更判定")
         store.removeObject(forKey: "アイコンバッジ")
-
+        
         
         store.synchronize()
         
@@ -98,17 +99,17 @@ class selectViewController: UIViewController {
         
         store.set(0, forKey: "宿題数")
         
-            store.set(["", ""], forKey: "宿題リスト1/タイトル")
-            store.set([0, 0], forKey: "宿題リスト1/状況")
+        store.set(["", ""], forKey: "宿題リスト1/タイトル")
+        store.set([0, 0], forKey: "宿題リスト1/状況")
         
-            store.set(["", ""], forKey: "宿題リスト2/タイトル")
-            store.set([0, 0], forKey: "宿題リスト2/状況")
+        store.set(["", ""], forKey: "宿題リスト2/タイトル")
+        store.set([0, 0], forKey: "宿題リスト2/状況")
         
-            store.set(["", ""], forKey: "宿題リスト3/タイトル")
-            store.set([0, 0], forKey: "宿題リスト3/状況")
+        store.set(["", ""], forKey: "宿題リスト3/タイトル")
+        store.set([0, 0], forKey: "宿題リスト3/状況")
         
-            store.set(["", ""], forKey: "宿題リスト4/タイトル")
-            store.set([0, 0], forKey: "宿題リスト4/状況")
+        store.set(["", ""], forKey: "宿題リスト4/タイトル")
+        store.set([0, 0], forKey: "宿題リスト4/状況")
         
         store.set(1, forKey: "帰宅判定")
         store.set(1, forKey: "帰宅判定プッシュ")
@@ -116,19 +117,15 @@ class selectViewController: UIViewController {
         store.set(0, forKey: "音読判定")
         store.set("", forKey: "音読時間")
         store.set(0, forKey: "宿題終了判定")
-                store.set(0, forKey: "音読判定プッシュ")
-                store.set(0, forKey: "はなまる判定プッシュ")
+        store.set(0, forKey: "音読判定プッシュ")
+        store.set(0, forKey: "はなまる判定プッシュ")
         store.set(0, forKey: "親アラート判定")
         store.set(0, forKey: "子アラート判定")
         store.set(0, forKey: "音読ボタン変更判定")
         store.set(1, forKey: "アイコンバッジ")
         
         store.synchronize()
+        
 
-    }
-    
-    @IBAction func oyaBtntap(_ sender: Any) {
-        
-        
     }
 }
