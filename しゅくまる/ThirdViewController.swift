@@ -30,7 +30,7 @@ class ThirdViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     //sectionごとの画像配列
     let imgArray:Array = [
-        "けいさんドリルai", "けいさんドリルai", "けいさんドリルai"
+        "再生ボタン", "再生ボタン", "再生ボタン"
     ]
     
     let label2Array:Array = [
@@ -51,7 +51,7 @@ class ThirdViewController: UIViewController, UITableViewDataSource, UITableViewD
         //tableCellのIDでUITableViewCellのインスタンスを生成
         let cell = table.dequeueReusableCell(withIdentifier: "renrakuCustomCell", for: indexPath) as! renrakuTableViewCell
         
-        cell.cellObject = setRenrakuCell(icon: "", title: "")
+        cell.cellObject = setRenrakuCell(icon: "再生ボタン", title: "")
         
         cell.delegate = self as! CustomTableViewRenrakuCellDelegate
         

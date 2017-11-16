@@ -29,6 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         NCMB.setApplicationKey(applicationkey, clientKey: clientkey)
         //▼▼▼起動時に処理される▼▼▼
         
+                signal(SIGPIPE, SIG_IGN)
         //▲▲▲起動時に処理される▲▲▲
         
         // background fetch
