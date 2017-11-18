@@ -304,7 +304,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
             if str == store.string(forKey: "音読時間") {
                 print("成功")
                 if Int(store.longLong(forKey: "親アラート判定")) == 1 {
-                    print("成功")
+                    print("成功se")
                     alert()
                 }
             }
@@ -314,7 +314,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     // アラートの表示
     func alert() {
         let store  = NSUbiquitousKeyValueStore.default()
-        let myAlert = UIAlertController(title: "音読の時間です", message: store.string(forKey: "音読時間"), preferredStyle: .alert)
+        let myAlert = UIAlertController(title: "音読の時間です", message: "電話画面に移動しましょう", preferredStyle: .alert)
         let myAction = UIAlertAction(title: "閉じる", style: .default) {
             action in print("foo!!")
         }
@@ -330,7 +330,6 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         dump(object)
         //shukudaiCount()
     }
-
     
     //画面を自動回転させない
     override var shouldAutorotate: Bool {

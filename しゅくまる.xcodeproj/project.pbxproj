@@ -32,6 +32,7 @@
 		192056761FB99D6F00C07909 /* shouhinListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192056751FB99D6F00C07909 /* shouhinListViewController.swift */; };
 		19235DF81FBD603000432F1C /* MediaConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19235DF71FBD603000432F1C /* MediaConnectionViewController.swift */; };
 		19235DFA1FBD73BE00432F1C /* TabMediaConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19235DF91FBD73BE00432F1C /* TabMediaConnectionViewController.swift */; };
+		192FD5FE1FBEABAB0062C3D9 /* denwaNaviViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192FD5FD1FBEABAB0062C3D9 /* denwaNaviViewController.swift */; };
 		193006601FB42BF700BB7539 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1930065F1FB42BF700BB7539 /* CustomCell.swift */; };
 		1945BF621FAF052D00EF3371 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1945BF611FAF052D00EF3371 /* SystemConfiguration.framework */; };
 		1945BF641FAF053A00EF3371 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1945BF631FAF053A00EF3371 /* GLKit.framework */; };
@@ -119,6 +120,7 @@
 		192056751FB99D6F00C07909 /* shouhinListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = shouhinListViewController.swift; sourceTree = "<group>"; };
 		19235DF71FBD603000432F1C /* MediaConnectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaConnectionViewController.swift; sourceTree = "<group>"; };
 		19235DF91FBD73BE00432F1C /* TabMediaConnectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabMediaConnectionViewController.swift; sourceTree = "<group>"; };
+		192FD5FD1FBEABAB0062C3D9 /* denwaNaviViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = denwaNaviViewController.swift; sourceTree = "<group>"; };
 		1930065F1FB42BF700BB7539 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		1945BF611FAF052D00EF3371 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		1945BF631FAF053A00EF3371 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
@@ -219,6 +221,7 @@
 				190FE5611FB6EB5500C12E32 /* しゅくまる.entitlements */,
 				1917F8781F5AFBB90070C44F /* AppDelegate.swift */,
 				1917F87E1F5AFBB90070C44F /* Main.storyboard */,
+				192FD5FD1FBEABAB0062C3D9 /* denwaNaviViewController.swift */,
 				19235DF91FBD73BE00432F1C /* TabMediaConnectionViewController.swift */,
 				19235DF71FBD603000432F1C /* MediaConnectionViewController.swift */,
 				191BFBF61FBC84CA002E09D2 /* renrakuTableViewCell.swift */,
@@ -626,6 +629,7 @@
 				19DB72E11FB5AF4600D366AE /* phoneTabBarController.swift in Sources */,
 				1917F87B1F5AFBB90070C44F /* FirstViewController.swift in Sources */,
 				1917F8AC1F5B0E250070C44F /* FourthViewController.swift in Sources */,
+				192FD5FE1FBEABAB0062C3D9 /* denwaNaviViewController.swift in Sources */,
 				19188F1A1F9526160033D03D /* TabFourthViewController.swift in Sources */,
 				19188F1C1F9530920033D03D /* ButtonCustom.swift in Sources */,
 				19DB72DF1FB59E7000D366AE /* phoneCustomCell.swift in Sources */,

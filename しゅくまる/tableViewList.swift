@@ -66,7 +66,7 @@ class tableViewList: UIViewController, UITableViewDataSource, UITableViewDelegat
     // アラートの表示
     func alert() {
         let store  = NSUbiquitousKeyValueStore.default()
-        let myAlert = UIAlertController(title: "おんどくのじかんです!", message: store.string(forKey: "音読時間"), preferredStyle: .alert)
+        let myAlert = UIAlertController(title: "おんどくのじかんです", message: "でんわがめんにいきましょう!", preferredStyle: .alert)
         let myAction = UIAlertAction(title: "とじる", style: .default) {
             action in print("foo!!")
         }
@@ -159,7 +159,6 @@ class tableViewList: UIViewController, UITableViewDataSource, UITableViewDelegat
         // 時間管理してくれる
         _ = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(tableViewList.update), userInfo: nil, repeats: true)
         
-
     }
     
     func ubiquitousDataDidChange(notification: NSNotification) {

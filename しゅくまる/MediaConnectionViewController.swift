@@ -53,6 +53,8 @@ class MediaConnectionViewController: UIViewController, UINavigationControllerDel
         self.strOwnId = nil
         self.bConnected = false
         self.view.backgroundColor = UIColor.white
+        
+        self.navigationItem.hidesBackButton = true
         if let navigationController = self.navigationController {
             navigationController.delegate = self
         }

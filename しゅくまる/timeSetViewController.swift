@@ -77,11 +77,10 @@ class timeSetViewController: UIViewController, UINavigationControllerDelegate {
             }
         }
     }
-    
     // アラートの表示
     func alert() {
         let store  = NSUbiquitousKeyValueStore.default()
-        let myAlert = UIAlertController(title: "音読の時間です", message: store.string(forKey: "音読時間"), preferredStyle: .alert)
+        let myAlert = UIAlertController(title: "音読の時間です", message: "電話画面に移動しましょう", preferredStyle: .alert)
         let myAction = UIAlertAction(title: "閉じる", style: .default) {
             action in print("foo!!")
         }

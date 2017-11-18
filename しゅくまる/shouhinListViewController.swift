@@ -65,8 +65,8 @@ class shouhinListViewController: UIViewController {
         }
         
         
-        hanamarusuu.text = finishCount.description
-        hanamarusuu2.text = finishCount.description
+        hanamarusuu.text = (23 + finishCount).description
+        hanamarusuu2.text = (98 + finishCount).description
         
 
         // Do any additional setup after loading the view.
@@ -112,7 +112,7 @@ class shouhinListViewController: UIViewController {
     // アラートの表示
     func alert() {
         let store  = NSUbiquitousKeyValueStore.default()
-        let myAlert = UIAlertController(title: "おんどくのじかんです!", message: store.string(forKey: "音読時間"), preferredStyle: .alert)
+        let myAlert = UIAlertController(title: "おんどくのじかんです", message: "でんわがめんにいきましょう!", preferredStyle: .alert)
         let myAction = UIAlertAction(title: "とじる", style: .default) {
             action in print("foo!!")
         }
@@ -167,8 +167,8 @@ class shouhinListViewController: UIViewController {
             }
             
             
-            hanamarusuu.text = finishCount.description
-            hanamarusuu2.text = finishCount.description
+            hanamarusuu.text = (23 + finishCount).description
+            hanamarusuu2.text = (98 + finishCount).description
             
         }
     }

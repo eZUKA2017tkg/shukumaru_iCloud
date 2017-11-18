@@ -90,8 +90,8 @@ class TabFourthViewController: UIViewController, UICollectionViewDataSource, UIC
         
         todayDateFormatter.dateFormat = "d" // 日付フォーマットの設定
         
-        hanamaruCounter.text = finishCount.description
-        hanamaruCounter2.text = finishCount.description
+        hanamaruCounter.text =  (23 + finishCount).description
+        hanamaruCounter2.text = (98 + finishCount).description
         
         //通知センターの設定
         let center = NotificationCenter.default
@@ -134,7 +134,7 @@ class TabFourthViewController: UIViewController, UICollectionViewDataSource, UIC
     // アラートの表示
     func alert() {
         let store  = NSUbiquitousKeyValueStore.default()
-        let myAlert = UIAlertController(title: "おんどくのじかんです!", message: store.string(forKey: "音読時間"), preferredStyle: .alert)
+        let myAlert = UIAlertController(title: "おんどくのじかんです", message: "でんわがめんにいきましょう!", preferredStyle: .alert)
         let myAction = UIAlertAction(title: "とじる", style: .default) {
             action in print("foo!!")
         }
@@ -187,8 +187,8 @@ class TabFourthViewController: UIViewController, UICollectionViewDataSource, UIC
             }
             
             
-            hanamaruCounter.text = finishCount.description
-            hanamaruCounter2.text = finishCount.description
+            hanamaruCounter.text = (23 + finishCount).description
+            hanamaruCounter2.text = (98 + finishCount).description
             
             calenderCollectionView.reloadData()
         }
@@ -239,17 +239,76 @@ class TabFourthViewController: UIViewController, UICollectionViewDataSource, UIC
 
             Btn?.setBackgroundImage(UIImage(named: "nil"), for: .normal)
             Btn?.setTitle("", for: .normal)
+            
+            let kakuninformatter: DateFormatter = DateFormatter()
+            kakuninformatter.dateFormat = "M"
+            
+            if kakuninformatter.string(from: selectedDate as Date) == "11" {
+            
+                if cell.textLabel.text == "1" {
+                    Btn?.setBackgroundImage(UIImage(named: "はなまるカレンダー"), for: .normal)
+                    Btn?.setTitle("1", for: .normal)
+                    Btn?.setTitleColor(UIColor(red: 216/255, green: 40/255, blue: 45/255, alpha: 1.0), for: .normal)
+                }else if cell.textLabel.text == "3" {
+                    Btn?.setBackgroundImage(UIImage(named: "はなまるカレンダー"), for: .normal)
+                    Btn?.setTitle("2", for: .normal)
+                    Btn?.setTitleColor(UIColor(red: 216/255, green: 40/255, blue: 45/255, alpha: 1.0), for: .normal)
+                }else if cell.textLabel.text == "6" {
+                    Btn?.setBackgroundImage(UIImage(named: "はなまるカレンダー"), for: .normal)
+                    Btn?.setTitle("1", for: .normal)
+                    Btn?.setTitleColor(UIColor(red: 216/255, green: 40/255, blue: 45/255, alpha: 1.0), for: .normal)
+                }else if cell.textLabel.text == "8" {
+                    Btn?.setBackgroundImage(UIImage(named: "はなまるカレンダー"), for: .normal)
+                    Btn?.setTitle("3", for: .normal)
+                    Btn?.setTitleColor(UIColor(red: 216/255, green: 40/255, blue: 45/255, alpha: 1.0), for: .normal)
+                }else if cell.textLabel.text == "9" {
+                    Btn?.setBackgroundImage(UIImage(named: "はなまるカレンダー"), for: .normal)
+                    Btn?.setTitle("2", for: .normal)
+                    Btn?.setTitleColor(UIColor(red: 216/255, green: 40/255, blue: 45/255, alpha: 1.0), for: .normal)
+                }else if cell.textLabel.text == "10" {
+                    Btn?.setBackgroundImage(UIImage(named: "はなまるカレンダー"), for: .normal)
+                    Btn?.setTitle("1", for: .normal)
+                    Btn?.setTitleColor(UIColor(red: 216/255, green: 40/255, blue: 45/255, alpha: 1.0), for: .normal)
+                }else if cell.textLabel.text == "13" {
+                    Btn?.setBackgroundImage(UIImage(named: "はなまるカレンダー"), for: .normal)
+                    Btn?.setTitle("2", for: .normal)
+                    Btn?.setTitleColor(UIColor(red: 216/255, green: 40/255, blue: 45/255, alpha: 1.0), for: .normal)
+                }else if cell.textLabel.text == "14" {
+                    Btn?.setBackgroundImage(UIImage(named: "はなまるカレンダー"), for: .normal)
+                    Btn?.setTitle("4", for: .normal)
+                    Btn?.setTitleColor(UIColor(red: 216/255, green: 40/255, blue: 45/255, alpha: 1.0), for: .normal)
+                }else if cell.textLabel.text == "15" {
+                    Btn?.setBackgroundImage(UIImage(named: "はなまるカレンダー"), for: .normal)
+                    Btn?.setTitle("3", for: .normal)
+                    Btn?.setTitleColor(UIColor(red: 216/255, green: 40/255, blue: 45/255, alpha: 1.0), for: .normal)
+                }else if cell.textLabel.text == "16" {
+                    Btn?.setBackgroundImage(UIImage(named: "はなまるカレンダー"), for: .normal)
+                    Btn?.setTitle("1", for: .normal)
+                    Btn?.setTitleColor(UIColor(red: 216/255, green: 40/255, blue: 45/255, alpha: 1.0), for: .normal)
+                }else if cell.textLabel.text == "17" {
+                    Btn?.setBackgroundImage(UIImage(named: "はなまるカレンダー"), for: .normal)
+                    Btn?.setTitle("3", for: .normal)
+                    Btn?.setTitleColor(UIColor(red: 216/255, green: 40/255, blue: 45/255, alpha: 1.0), for: .normal)
+                }
+                
+            }else {
+                Btn?.setBackgroundImage(UIImage(named: ""), for: .normal)
+                Btn?.setTitle("", for: .normal)
+            }
+            
+            
             if finishCount > 0 {
-                let kakuninformatter: DateFormatter = DateFormatter()
-                kakuninformatter.dateFormat = "M"
                 if kakuninformatter.string(from: now as Date) == kakuninformatter.string(from: selectedDate as Date + 1) {
-                if cell.textLabel.text == todayDateFormatter.string(from: now) {
-                print("成功")
+                
+                    if cell.textLabel.text == todayDateFormatter.string(from: now) {
+                        print("成功")
                     Btn?.setBackgroundImage(UIImage(named: "はなまるカレンダー"), for: .normal)
                     Btn?.setTitle(finishCount.description, for: .normal)
                     Btn?.setTitleColor(UIColor(red: 216/255, green: 40/255, blue: 45/255, alpha: 1.0), for: .normal)
+                    
                     }
                 }
+                
             }
             //月によって1日の場所は異なる
             
@@ -263,10 +322,14 @@ class TabFourthViewController: UIViewController, UICollectionViewDataSource, UIC
         if (ordinalityOfFirstDay2! - 1) > indexPath.row {
             cell.textLabel.text = ""
             Btn?.setBackgroundImage(UIImage(named: "nil"), for: .normal)
+            Btn?.setBackgroundImage(UIImage(named: ""), for: .normal)
+            Btn?.setTitle("", for: .normal)
         }
         if (ordinalityOfFirstDay2! - 2 + (dateRange?.count)!) < indexPath.row {
             cell.textLabel.text = ""
                         Btn?.setBackgroundImage(UIImage(named: "nil"), for: .normal)
+            Btn?.setBackgroundImage(UIImage(named: ""), for: .normal)
+            Btn?.setTitle("", for: .normal)
         }
         }
         

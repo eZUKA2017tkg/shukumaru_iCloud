@@ -51,7 +51,7 @@ class TabSecondViewController: UIViewController {
     // アラートの表示
     func alert() {
         let store  = NSUbiquitousKeyValueStore.default()
-        let myAlert = UIAlertController(title: "おんどくのじかんです!", message: store.string(forKey: "音読時間"), preferredStyle: .alert)
+        let myAlert = UIAlertController(title: "おんどくのじかんです", message: "でんわがめんにいきましょう!", preferredStyle: .alert)
         let myAction = UIAlertAction(title: "とじる", style: .default) {
             action in print("foo!!")
         }

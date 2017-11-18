@@ -1079,14 +1079,14 @@
         <!--でんわ-->
         <scene sceneID="JCa-Nn-TI7">
             <objects>
-                <navigationController id="hPo-cQ-WFk" sceneMemberID="viewController">
+                <navigationController id="hPo-cQ-WFk" customClass="denwaNaviViewController" customModule="しゅくまる" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="でんわ" image="通話グレー" id="DVd-Dh-tTY"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="yrR-11-eqA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" red="0.17351624369621277" green="0.51436048746109009" blue="0.52823942899703979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.10291493684053421" green="0.43977612257003784" blue="0.45352941751480103" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </textAttributes>
@@ -1915,7 +1915,9 @@
                             <constraint firstItem="09c-Ln-mZs" firstAttribute="top" secondItem="CSL-JE-bXK" secondAttribute="bottom" constant="42.5" id="z4c-Ek-O2S"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="1Wf-7k-niM"/>
+                    <navigationItem key="navigationItem" id="1Wf-7k-niM">
+                        <barButtonItem key="backBarButtonItem" title="もどる" id="1iM-PY-kki"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="OKbutton" destination="28W-ua-hvc" id="r3c-LA-MmH"/>
                         <outlet property="gaikokugo" destination="o6p-5N-Ci0" id="d8k-Pp-cjG"/>
